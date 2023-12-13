@@ -1,0 +1,65 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+
+  /* Chrome, Edge, and Safari */
+  *::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  *::-webkit-scrollbar-track {
+    background: rgba($color: #1a1b1e, $alpha: 0.2);
+    border-radius: 5px;
+  }
+
+  *::-webkit-scrollbar-thumb {
+    background-color: rgba($color: #1a1b1e, $alpha: 1);
+    border-radius: 14px;
+    border: 3px solid var(--primary);
+  }
+
+  input:-webkit-autofill,
+  input:-webkit-autofill:focus {
+    transition: background-color 0s 600000s, color 0s 600000s;
+  }
+
+  body {
+    @apply text-white bg-black;
+  }
+
+  @layer components {
+    .hover-animation {
+      @apply transition-colors duration-200;
+    }
+    .text-shadow {
+      text-shadow: 2px 2px 4px var(--tw-shadow-color);
+    }
+
+    .non-selectable {
+      -webkit-user-select: none;
+      -khtml-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      -o-user-select: none;
+      user-select: none;
+    }
+
+    .custom-underline {
+      @apply hover-animation underline decoration-transparent outline-none transition [text-decoration-thickness:1px] 
+             hover:decoration-inherit focus-visible:decoration-inherit;
+    }
+
+    .outline-glow {
+      @apply z-10 rounded-md bg-black outline-none 
+           [box-shadow:#65778633_0px_0px_15px,_#65778626_0px_0px_3px_1px] 
+           dark:[box-shadow:#ffffff33_0px_0px_15px,_#ffffff26_0px_0px_3px_1px];
+    }
+  }
+}
