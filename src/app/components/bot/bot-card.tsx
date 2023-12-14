@@ -43,7 +43,10 @@ export function BotCard({
             </Badge>
           )}
           <div className="peer relative rounded-md overflow-hidden duration-1000 h-40 xs:h-52">
-            <button className="flex xs:hidden absolute top-3 left-3 z-50">
+            <button
+              className="flex xs:hidden absolute top-3 left-3 z-50"
+              onClick={(e) => e.preventDefault()}
+            >
               <CustomIcon className="w-8 h-8" iconName="HeartIcon" />
             </button>
             <div

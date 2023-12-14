@@ -26,7 +26,7 @@ export function BotTooltip({
       }
     >
       <div className="relative rounded-t-md overflow-hidden duration-1000 h-32 w-full">
-        <button>
+        <button onClick={(e) => e.preventDefault()}>
           <CustomIcon
             className="absolute top-3 left-3 z-50"
             iconName="HeartIcon"

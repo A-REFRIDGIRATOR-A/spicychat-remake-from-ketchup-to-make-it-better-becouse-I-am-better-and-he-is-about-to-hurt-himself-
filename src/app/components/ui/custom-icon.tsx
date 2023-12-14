@@ -1,4 +1,4 @@
-type IconName = keyof typeof Icons;
+export type IconName = keyof typeof Icons;
 
 type IconProps = {
   className?: string;
