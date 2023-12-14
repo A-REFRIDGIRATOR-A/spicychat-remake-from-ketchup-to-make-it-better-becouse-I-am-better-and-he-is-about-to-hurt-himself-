@@ -2,7 +2,8 @@ import { twMerge } from "tailwind-merge";
 import type { ChangeEvent, KeyboardEvent } from "react";
 
 type InputFieldProps = {
-  label: string;
+  inputId?: string;
+  label?: string;
   placeholder?: string;
   inputValue: string | null;
   inputLimit?: number;
@@ -10,6 +11,7 @@ type InputFieldProps = {
   useTextArea?: boolean;
   errorMessage?: string;
   className?: string;
+  inputClassName?: string;
   handleChange: (
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => void;
@@ -20,6 +22,7 @@ type InputFieldProps = {
 };
 
 export function InputField({
+  inputId,
   label,
   placeholder,
   inputValue,
@@ -28,6 +31,7 @@ export function InputField({
   useTextArea,
   errorMessage,
   className,
+  inputClassName,
   handleChange,
   handleKeyboardShortcut,
 }: InputFieldProps): JSX.Element {
@@ -38,7 +42,9 @@ export function InputField({
   const isInputLimit = inputLimit && inputLength === inputLimit;
 
   return (
-    <div className="relative inline-flex flex-col self-start">
+    <div
+      className={twMerge("relative inline-flex flex-col self-start", className)}
+    >
       <label className="text-sm">{label}</label>
       <div
         className={twMerge(
@@ -48,9 +54,10 @@ export function InputField({
       >
         {useTextArea ? (
           <textarea
+            id={inputId}
             className={twMerge(
               "w-full h-40 p-2 bg-white/20 rounded-md",
-              className
+              inputClassName
             )}
             placeholder={placeholder ?? label}
             value={slicedInputValue}
@@ -60,9 +67,10 @@ export function InputField({
           />
         ) : (
           <input
+            id={inputId}
             className={twMerge(
               "w-full p-2 bg-white/20 rounded-mdd outline-none",
-              className
+              inputClassName
             )}
             placeholder={placeholder ?? label}
             value={slicedInputValue}

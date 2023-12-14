@@ -1,10 +1,11 @@
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { CustomIcon } from "./custom-icon";
-import { NextImage } from "./next-image";
-import { Avatar } from "./avatar";
+import { CustomIcon } from "../ui/custom-icon";
+import { NextImage } from "../ui/next-image";
+import { Avatar } from "../ui/avatar";
 import { BotTooltip } from "./bot-tooltip";
-import { UserTooltip } from "./user-tooltip";
+import { UserTooltip } from "../ui/user-tooltip";
+import { Badge } from "../ui/badge";
 
 export type BotCardProps = {
   src: string;
@@ -12,6 +13,7 @@ export type BotCardProps = {
   description: string;
   creator: string;
   messages: number;
+  recommended?: boolean;
 };
 
 export function BotCard({
@@ -20,10 +22,11 @@ export function BotCard({
   description,
   creator,
   messages,
+  recommended,
 }: BotCardProps): JSX.Element {
   return (
     <motion.div
-      className="outline-glows flex flex-col gap-3 group w-64 bg-black hover:scale-105
+      className="flex flex-col gap-3 group w-44 xs:w-64 bg-black hover:scale-105
                     cursor-pointer transition-all rounded-md duration-300 z-0 hover:z-10"
       whileHover={{
         scale: 1.05, // use your mobile var to ignore hover on mobile
@@ -31,12 +34,20 @@ export function BotCard({
     >
       <div className="relative group/img">
         <Link href="#">
-          <div className="peer relative rounded-md overflow-hidden duration-1000 h-52">
-            <button className="flex xl:hidden absolute top-3 left-3 z-50">
+          {recommended && (
+            <Badge
+              className="absolute -top-3 left-9 right-9 z-10 xs:text-sm
+                        shadow-lg shadow-black/40 font-bold text-xs"
+            >
+              Recommended
+            </Badge>
+          )}
+          <div className="peer relative rounded-md overflow-hidden duration-1000 h-40 xs:h-52">
+            <button className="flex xs:hidden absolute top-3 left-3 z-50">
               <CustomIcon className="w-8 h-8" iconName="HeartIcon" />
             </button>
             <div
-              className="non-selectable w-full h-full xl:group-hover:scale-110
+              className="non-selectable w-full h-full xs:group-hover:scale-110
                       transition-all duration-500"
             >
               <NextImage
@@ -65,7 +76,7 @@ export function BotCard({
           <p className="text-xs">{messages}</p>
         </div>
 
-        <p className="block xl:hidden w-full text-ellipsis h-14 overflow-hidden text-sm">
+        <p className="block xs:hidden w-full text-ellipsis h-14 overflow-hidden text-sm">
           <span className="line-clamp-3">{description}</span>
         </p>
 
@@ -80,7 +91,7 @@ export function BotCard({
 
           <button className="ml-auto">
             <CustomIcon
-              className="w-8 h-8 xl:w-6 xl:h-6 hover:text-white/70 active:text-white/50"
+              className="w-8 h-8 xs:w-6 xs:h-6 hover:text-white/70 active:text-white/50"
               iconName="EllipsisIcon"
             />
           </button>

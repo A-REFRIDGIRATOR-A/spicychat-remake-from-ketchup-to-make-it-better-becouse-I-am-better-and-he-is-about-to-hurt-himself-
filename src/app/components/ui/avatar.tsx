@@ -11,15 +11,12 @@ type AvatarProps = {
 export function Avatar({
   src,
   alt,
-  width,
+  width = 50,
   className,
 }: AvatarProps): JSX.Element {
   return (
     <div
-      className={twMerge(
-        "relative rounded-full overflow-hidden w-50 h-50",
-        className
-      )}
+      className={twMerge("relative rounded-full overflow-hidden", className)}
       style={{ width, height: width }}
     >
       <NextImage

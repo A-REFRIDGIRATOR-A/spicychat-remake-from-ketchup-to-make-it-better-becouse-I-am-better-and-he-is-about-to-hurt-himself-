@@ -1,9 +1,9 @@
 import Link from "next/link";
-import { CustomIcon } from "./custom-icon";
-import { NextImage } from "./next-image";
-import { Avatar } from "./avatar";
+import { CustomIcon } from "../ui/custom-icon";
+import { NextImage } from "../ui/next-image";
+import { Avatar } from "../ui/avatar";
 import { BotCardProps } from "./bot-card";
-import { UserTooltip } from "./user-tooltip";
+import { UserTooltip } from "../ui/user-tooltip";
 
 export function BotTooltip({
   src,
@@ -14,7 +14,7 @@ export function BotTooltip({
 }: BotCardProps): JSX.Element {
   return (
     <div
-      className="hidden xl:block outline-glow absolute invisible group-hover/img:visible
+      className="hidden xs:block outline-glow absolute invisible group-hover/img:visible
                 w-96 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/3
                 h-96 group-hover:z-[1000] opacity-0 group-hover/img:opacity-100
                 transition-all [transition:visibility_0ms_ease_600ms,opacity_400ms_ease]
