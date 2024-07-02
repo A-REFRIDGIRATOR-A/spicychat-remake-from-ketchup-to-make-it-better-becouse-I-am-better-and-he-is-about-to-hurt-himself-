@@ -63,7 +63,7 @@ export function FilterOptions(): JSX.Element {
 
   return (
     <div
-      className="sticky xs:top-[4.3rem] xs:flex flex-row gap-3 items-center hidden
+      className="sticky top-16 xs:flex flex-row gap-3 items-center hidden
                 w-full px-5 z-50 bg-black justify-center pt-5 border-b border-b-dark-border"
     >
       {options.map((option, index) => (
@@ -72,7 +72,9 @@ export function FilterOptions(): JSX.Element {
           className="relative p-2 border-main-accent group"
           href={`/?sort-by=${option.queryValue}`}
         >
-          {option.name}
+          <span className={cn(handleSelected(option) && "font-bold")}>
+            {option.name}
+          </span>
           <i
             className={cn(
               "absolute bottom-0 left-0 right-0 opacity-0 bg-main-accent h-0.5 duration-300 transition-opacity",

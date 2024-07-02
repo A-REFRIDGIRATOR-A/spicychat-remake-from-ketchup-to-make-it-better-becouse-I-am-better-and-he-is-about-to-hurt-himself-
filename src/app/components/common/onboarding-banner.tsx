@@ -22,18 +22,18 @@ export function OnboardingBanner(): JSX.Element {
         />
 
         <div className="w-full h-full px-4 xs:px-20 py-2 flex flex-col items-start">
-          <span className="text-[14px] xs:text-[22px] font-semibold text-center xs:text-left mb-3 xs:mb-0">
+          <span className="text-sm xs:text-[22px] text- font-semibold text-center xs:text-left mb-3 xs:mb-0">
             Welcome to your ultimate destination for personalized, uncensored
             roleplaying
           </span>
 
-          <span className="text-[14px]">
+          <span className="text-sm">
             Chat instantly, or join over 2 million registered users to gain
             access to:
           </span>
 
           <ul
-            className="text-[14px] *:list-disc xs:grid-cols-2 grid grid-cols-1
+            className="text-sm *:list-disc xs:grid-cols-2 grid grid-cols-1
                       max-w-[700px] text-white list-disc pl-4 mt-5 whitespace-nowrap -space-y-1"
           >
             <li>Library of 200,000+ chatbots</li>
@@ -44,7 +44,7 @@ export function OnboardingBanner(): JSX.Element {
           </ul>
 
           <button
-            className="xs:absolute xs:right-10 xs:top-[40%] xs:border rounded-full px-5 py-1 text-[20px] font-bold xs:bg-black/5
+            className="xs:absolute xs:right-10 xs:top-[40%] xs:border rounded-full px-5 py-1 text-xl font-bold xs:bg-black/5
                       xs:mt-0 mt-auto bg-white text-black xs:text-white"
           >
             Create Free Account

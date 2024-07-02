@@ -15,7 +15,6 @@ module.exports = {
     },
     extend: {
       colors: {
-        "dark-border": "#1E293B",
         "main-accent": "rgb(var(--main-accent) / <alpha-value>)",
         "accent-yellow": "rgb(var(--accent-yellow) / <alpha-value>)",
         "accent-blue": "rgb(var(--accent-blue) / <alpha-value>)",
@@ -24,6 +23,8 @@ module.exports = {
         "accent-orange": "rgb(var(--accent-orange) / <alpha-value>)",
         "accent-green": "rgb(var(--accent-green) / <alpha-value>)",
         "accent-red": "#F4212E",
+        "dark-border": "#1E293B",
+        "gray-dark": "#141414",
       },
     },
   },

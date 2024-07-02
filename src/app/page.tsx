@@ -1,4 +1,6 @@
+import { Suspense } from "react";
 import { BotCard } from "./components/bot/bot-card";
+import { Footer } from "./components/common/footer";
 import { MainContainer } from "./components/common/main-container";
 import { OnboardingBanner } from "./components/common/onboarding-banner";
 import { FilterOptions } from "./components/home/filter-options";
@@ -26,13 +28,15 @@ export default function Home() {
   }
 
   return (
-    <MainLayout>
+    <MainLayout className="flex flex-col items-center">
       <MainContainer>
         <Header sticky />
 
         <OnboardingBanner />
 
-        <FilterOptions />
+        <Suspense>
+          <FilterOptions />
+        </Suspense>
 
         <div className="flex flex-col items-center gap-20 w-full h-full mt-10">
           <div
@@ -44,6 +48,7 @@ export default function Home() {
           </div>
         </div>
       </MainContainer>
+      <Footer />
     </MainLayout>
   );
 }
