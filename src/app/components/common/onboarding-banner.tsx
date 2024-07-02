@@ -21,7 +21,7 @@ export function OnboardingBanner(): JSX.Element {
           fill
         />
 
-        <div className="w-full h-full px-4 xs:px-20 py-2 flex flex-col">
+        <div className="w-full h-full px-4 xs:px-20 py-2 flex flex-col items-start">
           <span className="text-[14px] xs:text-[22px] font-semibold text-center xs:text-left mb-3 xs:mb-0">
             Welcome to your ultimate destination for personalized, uncensored
             roleplaying

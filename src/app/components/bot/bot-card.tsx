@@ -50,7 +50,7 @@ export function BotCard({
 
         <div className="flex flex-row items-center gap-3 w-full">
           <div className="group/user">
-            <UserTooltip name="User123" botCount={3} />
+            <UserTooltip name="User123" botCount={16} />
             <Avatar src="/assets/hq2.jpg" width={40} />
           </div>
           <p className="font-bold w-44 overflow-hidden whitespace-nowrap overflow-ellipsis">
