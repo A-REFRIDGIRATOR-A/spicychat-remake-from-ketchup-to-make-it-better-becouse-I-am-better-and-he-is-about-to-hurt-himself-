@@ -1,4 +1,4 @@
-import { twMerge } from "tailwind-merge";
+import { cn } from "../lib/cn";
 import type { ChangeEvent, KeyboardEvent } from "react";
 
 type InputFieldProps = {
@@ -42,12 +42,10 @@ export function InputField({
   const isInputLimit = inputLimit && inputLength === inputLimit;
 
   return (
-    <div
-      className={twMerge("relative inline-flex flex-col self-start", className)}
-    >
+    <div className={cn("relative inline-flex flex-col self-start", className)}>
       <label className="text-sm">{label}</label>
       <div
-        className={twMerge(
+        className={cn(
           "inline-flex flex-col rounded overflow-hidden transition-all duration-500 items-start self-start",
           errorMessage && "ring-1 focus-within:ring-2 ring-red-500"
         )}
@@ -55,7 +53,7 @@ export function InputField({
         {useTextArea ? (
           <textarea
             id={inputId}
-            className={twMerge(
+            className={cn(
               "w-full h-40 p-2 bg-white/20 rounded-md",
               inputClassName
             )}
@@ -68,7 +66,7 @@ export function InputField({
         ) : (
           <input
             id={inputId}
-            className={twMerge(
+            className={cn(
               "w-full p-2 bg-white/20 rounded-mdd outline-none",
               inputClassName
             )}
@@ -87,7 +85,7 @@ export function InputField({
         )}
         {showInputLimit && inputLimit && (
           <span
-            className={twMerge(
+            className={cn(
               "transition-all duration-500 text-right text-xs ml-auto",
               isInputLimit && "text-red-500"
             )}

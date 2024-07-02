@@ -1,10 +1,11 @@
+"use client";
+
 import Link from "next/link";
-import { twMerge } from "tailwind-merge";
+import { cn } from "../lib/cn";
 import { CustomIcon } from "../ui/custom-icon";
 import { Avatar } from "../ui/avatar";
 import { InputField } from "../input/input-field";
 import { useState } from "react";
-import { MobileSidebar } from "../sidebar/mobile-sidebar";
 import { Modal } from "../modal/modal";
 import { MobileSidebarModal } from "../modal/mobile-sidebar-modal";
 import { useModal } from "../lib/hooks/useModal";
@@ -38,14 +39,14 @@ export function Header({ sticky, className }: HeaderProps): JSX.Element {
 
   return (
     <>
-      <div className="w-full h-6 text-center bg-red-700 font-bold">
-        <span>This is how I would desgin the site. (WIP)</span>
+      <div className="w-full h-6 text-center bg-accent-red font-bold">
+        <span>Unofficial Spicychat fanmade remake. (WIP)</span>
       </div>
       <header
-        className={twMerge(
+        className={cn(
           `relative w-full h-20 hidden xs:flex flex-row gap-5
-          items-center justify-center py-5 px-20`,
-          sticky && "sticky",
+          items-center justify-center py-5 px-20 bg-black z-50`,
+          sticky && "sticky top-0",
           className
         )}
       >
@@ -75,7 +76,7 @@ export function Header({ sticky, className }: HeaderProps): JSX.Element {
         </div>
       </header>
       <header
-        className={twMerge(
+        className={cn(
           `w-full h-20 xs:hidden flex flex-row gap-5
           items-center py-5 px-3 sticky top-0 z-50 backdrop-blur-lg`,
           className

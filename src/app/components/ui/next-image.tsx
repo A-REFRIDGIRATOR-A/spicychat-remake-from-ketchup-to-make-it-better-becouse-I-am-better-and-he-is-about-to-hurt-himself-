@@ -3,7 +3,7 @@
 "use client";
 
 import Image from "next/image";
-import { twMerge } from "tailwind-merge";
+import { cn } from "../lib/cn";
 import { useState } from "react";
 import type { ImageProps } from "next/image";
 
@@ -37,8 +37,8 @@ export function NextImage({
   return (
     <figure style={{ width }} className={className}>
       <Image
-        className={twMerge(
-          imgClassName, // use pointer-events-none to prevent Edge from showing image options
+        className={cn(
+          imgClassName,
           loading
             ? blurClassName ?? "animate-pulse bg-[#71767B]"
             : previewCount === 1

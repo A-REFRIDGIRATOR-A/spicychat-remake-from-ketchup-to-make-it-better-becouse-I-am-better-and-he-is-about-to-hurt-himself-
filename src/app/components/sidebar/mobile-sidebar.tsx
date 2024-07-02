@@ -1,4 +1,4 @@
-import { twMerge } from "tailwind-merge";
+import { cn } from "../lib/cn";
 
 type MobileSidebarProps = {
   open: boolean;
@@ -12,7 +12,7 @@ export function MobileSidebar({
   return (
     <>
       <div
-        className={twMerge(
+        className={cn(
           `xs:hidden fixed inset-0 min-h-screen w-screen z-40
           backdrop-blur-sm opacity-0 hidden overflow-hidden`,
           open && "opacity-100 block"
@@ -20,7 +20,7 @@ export function MobileSidebar({
         autoFocus={open}
       >
         <div
-          className={twMerge(
+          className={cn(
             `absolute left-0 top-0 bottom-0 w-64 min-h-screen backdrop-blur-xl z-50
           transition-all duration-500 -translate-x-96 xs:hidden flex overflow-hidden`,
             open && "translate-x-0"

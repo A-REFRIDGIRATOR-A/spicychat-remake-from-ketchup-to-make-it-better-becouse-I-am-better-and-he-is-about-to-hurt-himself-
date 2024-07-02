@@ -1,6 +1,6 @@
+import { cn } from "../lib/cn";
 import { AnimatePresence, motion } from "framer-motion";
 import { Dialog } from "@headlessui/react";
-import { twMerge } from "tailwind-merge";
 import type { ReactNode } from "react";
 import type { Variants } from "framer-motion";
 
@@ -57,7 +57,7 @@ export function Modal({
             {...backdrop}
           />
           <div
-            className={twMerge(
+            className={cn(
               "fixed inset-0 overflow-y-auto p-4",
               className ?? "flex items-center justify-center"
             )}
