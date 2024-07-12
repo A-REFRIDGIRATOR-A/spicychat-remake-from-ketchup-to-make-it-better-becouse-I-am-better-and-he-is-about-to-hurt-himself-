@@ -5,14 +5,15 @@ import { Badge } from "../ui/badge";
 import { CustomIcon } from "../ui/custom-icon";
 import { NextImage } from "../ui/next-image";
 import { BotTooltip } from "./bot-tooltip";
+import type { User } from "../lib/types/user";
 
 type BotCardContentProps = {
   recommended?: boolean;
   src: string;
   botName: string;
   description: string;
-  creator: string;
   messages: number;
+  user: User | null;
 };
 
 export function BotCardContent({
@@ -20,8 +21,8 @@ export function BotCardContent({
   src,
   botName,
   description,
-  creator,
   messages,
+  user,
 }: BotCardContentProps): JSX.Element {
   return (
     <div className="relative group/img">
@@ -62,8 +63,8 @@ export function BotCardContent({
         src={src}
         name={botName}
         description={description}
-        creator={creator}
         messages={messages}
+        user={user}
       />
     </div>
   );

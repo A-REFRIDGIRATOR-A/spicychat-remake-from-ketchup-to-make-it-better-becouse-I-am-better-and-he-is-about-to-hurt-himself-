@@ -1,17 +1,13 @@
-import Link from "next/link";
 import { CustomIcon } from "../ui/custom-icon";
-import { NextImage } from "../ui/next-image";
 import { Avatar } from "../ui/avatar";
-import { BotTooltip } from "./bot-tooltip";
 import { UserTooltip } from "../ui/user-tooltip";
-import { Badge } from "../ui/badge";
 import { BotCardContent } from "./bot-card-content";
+import type { User } from "../lib/types/user";
 
-export type BotCardProps = {
+type BotCardProps = {
   src: string;
   name: string;
-  description: string;
-  creator: string;
+  description: string; // Known as "title" on Spicychat
   messages: number;
   recommended?: boolean;
 };
@@ -20,10 +16,15 @@ export function BotCard({
   src,
   name,
   description,
-  creator,
   messages,
   recommended,
 }: BotCardProps): JSX.Element {
+  const dummyUser: User = {
+    name: "User123",
+    username: "user123",
+    botCount: 16,
+  };
+
   return (
     <div
       className="flex flex-col gap-3 group w-44 xs:w-52 bg-blackcursor-pointer transition-all
@@ -34,7 +35,7 @@ export function BotCard({
         src={src}
         botName={name}
         description={description}
-        creator={creator}
+        user={dummyUser}
         messages={messages}
       />
 
@@ -50,9 +51,10 @@ export function BotCard({
 
         <div className="flex flex-row items-center gap-3 w-full">
           <div className="group/user">
-            <UserTooltip name="User123" botCount={16} />
+            <UserTooltip user={dummyUser} />
             <Avatar src="/assets/hq2.jpg" width={40} />
           </div>
+
           <p className="font-bold w-44 overflow-hidden whitespace-nowrap overflow-ellipsis">
             {name}
           </p>

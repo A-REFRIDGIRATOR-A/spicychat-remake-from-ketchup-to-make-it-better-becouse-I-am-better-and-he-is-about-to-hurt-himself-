@@ -2,7 +2,16 @@
 
 import Link from "next/link";
 import { cn } from "../lib/cn";
+import { BOT_TAGS } from "../lib/types/tags";
+import {
+  Dropdown,
+  DropdownButton,
+  DropdownItems,
+  DropdownItem,
+} from "../ui/dropdown/dropdown";
 import { useSearchParams } from "next/navigation";
+import type { DropdownButtonItem } from "../ui/dropdown/dropdown";
+import { MultiselectDropdown } from "../ui/dropdown/multiselect-dropdown";
 
 const sortOptions = [
   "trending",
@@ -61,9 +70,15 @@ export function FilterOptions(): JSX.Element {
     return false;
   };
 
+  const tags: DropdownButtonItem[] = BOT_TAGS.map((tag, index) => {
+    return {
+      label: tag,
+    };
+  });
+
   return (
     <div
-      className="sticky top-16 xs:flex flex-row gap-3 items-center hidden
+      className="sticky top-16 xs:flex flex-row gap-3 items-center hidden shadow-lg shadow-black/50
                 w-full px-5 z-50 bg-black justify-center pt-5 border-b border-b-dark-border"
     >
       {options.map((option, index) => (
@@ -85,6 +100,10 @@ export function FilterOptions(): JSX.Element {
           />
         </Link>
       ))}
+
+      <div>
+        <MultiselectDropdown label="Tags" items={tags} />
+      </div>
     </div>
   );
 }

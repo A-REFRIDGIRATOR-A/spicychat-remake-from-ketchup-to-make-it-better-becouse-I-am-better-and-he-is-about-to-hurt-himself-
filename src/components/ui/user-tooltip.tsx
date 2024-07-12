@@ -1,14 +1,15 @@
-import Link from "next/link";
-import { CustomIcon } from "./custom-icon";
 import { NextImage } from "./next-image";
 import { Avatar } from "./avatar";
+import { isPlural } from "../lib/utils";
+import { User } from "../lib/types/user";
 
 type UserTooltipProps = {
-  name: string;
-  botCount: number;
+  user: User | null;
 };
 
-export function UserTooltip({ name, botCount }: UserTooltipProps): JSX.Element {
+export function UserTooltip({ user }: UserTooltipProps): JSX.Element {
+  const { username, botCount } = user ?? {};
+
   return (
     <div
       className="hidden xl:flex outline-glow absolute invisible group-hover/user:visible
@@ -16,11 +17,6 @@ export function UserTooltip({ name, botCount }: UserTooltipProps): JSX.Element {
                 h-52 group-hover:z-[1000] opacity-0 group-hover/user:opacity-100
                 transition-all [transition:visibility_0ms_ease_600ms,opacity_400ms_ease]
                 group-hover/user:delay-500 bg-black rounded-md flex-col gap-3"
-      style={
-        {
-          //boxShadow: "0px 0px 20px 5px rgba(255, 255, 255, 0.2)",
-        }
-      }
     >
       <div className="relative w-full h-24 rounded-t-md overflow-hidden">
         <NextImage src="/assets/hq.jpg" alt="user-banner" layout="fill" />
@@ -33,9 +29,9 @@ export function UserTooltip({ name, botCount }: UserTooltipProps): JSX.Element {
         />
 
         <div className="flex flex-row">
-          <p className="text-white/60">@{name}</p>
+          <p className="text-white/60">@{username}</p>
           <p className="ml-auto">
-            {botCount} {botCount > 1 ? "bots" : "bot"}
+            {botCount} {"bot" + isPlural(botCount as number)}
           </p>
         </div>
       </div>

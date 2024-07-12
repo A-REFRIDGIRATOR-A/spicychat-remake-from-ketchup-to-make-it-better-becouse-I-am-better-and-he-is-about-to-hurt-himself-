@@ -21,7 +21,7 @@ export function OnboardingBanner(): JSX.Element {
           fill
         />
 
-        <div className="w-full h-full px-4 xs:px-20 py-2 flex flex-col items-start">
+        <div className="w-full h-full px-4 xs:px-20 py-2 flex flex-col xs:items-start [&_*]:z-10">
           <span className="text-sm xs:text-[22px] text- font-semibold text-center xs:text-left mb-3 xs:mb-0">
             Welcome to your ultimate destination for personalized, uncensored
             roleplaying
@@ -44,7 +44,7 @@ export function OnboardingBanner(): JSX.Element {
           </ul>
 
           <button
-            className="xs:absolute xs:right-10 xs:top-[40%] xs:border rounded-full px-5 py-1 text-xl font-bold xs:bg-black/5
+            className="xs:absolute xs:right-10 xs:top-[40%] xs:border rounded-full xs:px-5 px-0 py-1 text-xl font-bold xs:bg-black/5
                       xs:mt-0 mt-auto bg-white text-black xs:text-white"
           >
             Create Free Account

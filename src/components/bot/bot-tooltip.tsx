@@ -2,16 +2,25 @@ import Link from "next/link";
 import { CustomIcon } from "../ui/custom-icon";
 import { NextImage } from "../ui/next-image";
 import { Avatar } from "../ui/avatar";
-import { BotCardProps } from "./bot-card";
 import { UserTooltip } from "../ui/user-tooltip";
+import type { User } from "../lib/types/user";
+
+type BotTooltipProps = {
+  src: string;
+  name: string;
+  description: string;
+  messages: number;
+  recommended?: boolean;
+  user: User | null;
+};
 
 export function BotTooltip({
   src,
   name,
   description,
-  creator,
   messages,
-}: BotCardProps): JSX.Element {
+  user,
+}: BotTooltipProps): JSX.Element {
   return (
     <div
       className="hidden xs:block outline-glow absolute invisible group-hover/img:visible
@@ -19,11 +28,6 @@ export function BotTooltip({
                 h-96 group-hover:z-[1000] opacity-0 group-hover/img:opacity-100
                 transition-all [transition:visibility_0ms_ease_600ms,opacity_400ms_ease]
                 group-hover/img:delay-500 bg-black rounded-md"
-      style={
-        {
-          //boxShadow: "0px 0px 20px 5px rgba(255, 255, 255, 0.2)",
-        }
-      }
     >
       <div className="relative rounded-t-md overflow-hidden duration-1000 h-32 w-full">
         <button onClick={(e) => e.preventDefault()}>
@@ -62,15 +66,16 @@ export function BotTooltip({
 
         <div className="flex flex-row gap-2 items-center mt-3">
           <div className="group/user">
-            <UserTooltip name="User123" botCount={3} />
+            <UserTooltip user={user} />
             <Avatar src="/assets/hq2.jpg" width={45} />
           </div>
+
           <Link
             href="#"
             className="custom-underline w-80 text-white/70 overflow-hidden
                       whitespace-nowrap overflow-ellipsis"
           >
-            @{creator}
+            @{user?.username}
           </Link>
         </div>
 
