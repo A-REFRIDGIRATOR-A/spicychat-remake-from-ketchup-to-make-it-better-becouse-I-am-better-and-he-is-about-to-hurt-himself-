@@ -1,36 +1,12 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+This is a **fanmade** remake of [Spicychat](https://spicychat.ai).
 
-## Getting Started
+## Why does this exist?
+The goal of this project is to not only show how Spicychat could look with an upgraded UI, but to provide the devs with useful components to (hopefully) get them to stop using NextUI.
 
-First, run the development server:
+## Can I help?
+Well yes but actually no. As of right now this is purely a solo passion project. However, you are free to help fix any bugs and make suggestions but I will not be merging any PRs that add anything new.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## You could have done X thing better
+If you've found something in my code that could have been made better then PLEASE open an issue and tell me about it. :)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Note that I will commit changes that are not fully implemented or are buggy and lack proper testing. So keep that in mind as well.
