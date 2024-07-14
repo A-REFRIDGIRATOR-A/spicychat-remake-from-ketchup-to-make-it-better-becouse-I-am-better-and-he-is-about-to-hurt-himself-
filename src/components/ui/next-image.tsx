@@ -49,7 +49,7 @@ export function NextImage({
         alt={alt}
         width={width}
         height={height}
-        onLoadingComplete={handleLoad}
+        onLoad={handleLoad}
         layout="responsive"
         {...rest}
       />

@@ -42,12 +42,12 @@ export function InputField({
   const isInputLimit = inputLimit && inputLength === inputLimit;
 
   return (
-    <div className={cn("relative inline-flex flex-col self-start", className)}>
+    <div className={cn("relative inline-flex flex-col w-full", className)}>
       <label className="text-sm">{label}</label>
       <div
         className={cn(
-          "inline-flex flex-col rounded overflow-hidden transition-all duration-500 items-start self-start",
-          errorMessage && "ring-1 focus-within:ring-2 ring-red-500"
+          "inline-flex flex-col rounded overflow-hidden transition-all duration-500",
+          errorMessage && "ring-1 focus-within:ring-2 ring-red-500 w-full"
         )}
       >
         {useTextArea ? (
@@ -67,7 +67,7 @@ export function InputField({
           <input
             id={inputId}
             className={cn(
-              "w-full p-2 bg-white/20 rounded-mdd outline-none",
+              "w-full p-2 bg-white/20 rounded-md outline-none",
               inputClassName
             )}
             placeholder={placeholder ?? label}

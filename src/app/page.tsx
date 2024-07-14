@@ -6,32 +6,34 @@ import { FilterOptions } from "../components/home/filter-options";
 import { Header } from "../components/common/header";
 import { MainLayout } from "../components/layout/main-layout";
 import { BotsContainer } from "../components/home/bots-container";
-import { BotCard } from "../components/bot/bot-card";
+import { BotCard } from "../components/bot/card/bot-card";
 import { FilterOptionsFallback } from "@/components/fallbacks/filter-options-fallback";
+import { getBots } from "@/actions/get-bots";
+import { Modal } from "@/components/modal/modal";
 
-export default function Home() {
+export default async function Home() {
+  const data = await getBots();
+
+  //console.log(data);
+
   function DummyBots(): JSX.Element {
     return (
       <>
-        {Array.from({ length: 16 }, (_, index) => (
-          <BotCard
-            key={index}
-            src="/assets/harley.png"
-            name="Harley Quinn"
-            description={`Harley Quinn (Harleen Frances Quinzel) is a character appearing in
-                            American comic books published by DC Comics.`}
-            messages={123}
-            recommended
-          />
+        {data.data.map((bot, index) => (
+          <BotCard key={index} bot={bot} />
         ))}
       </>
     );
   }
 
+  // if (typeof window === "undefined") {
+  //   console.log("we are a sever component");
+  // } else console.log("we are a client component");
+
   return (
     <MainLayout className="flex flex-col items-center">
       <MainContainer>
-        <Header sticky />
+        <Header />
 
         <OnboardingBanner />
 

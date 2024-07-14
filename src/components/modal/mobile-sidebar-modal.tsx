@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 import { CustomIcon, IconName } from "../ui/custom-icon";
 
@@ -23,7 +25,7 @@ export function MobileSidebarModal({
   closeModal,
 }: MobileSidebarModalProps): JSX.Element {
   return (
-    <section className="flex flex-col gap-3 px-4">
+    <section className="flex flex-col gap-3 px-4 mt-10">
       {navLinks.map(({ name, link, iconName }) => (
         <Link
           key={name}

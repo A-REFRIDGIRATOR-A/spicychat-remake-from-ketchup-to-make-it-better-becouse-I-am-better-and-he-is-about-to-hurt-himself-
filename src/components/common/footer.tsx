@@ -51,8 +51,8 @@ const links = [
 
 export function Footer(): JSX.Element {
   return (
-    <footer className="w-full py-5 flex flex-col gap-2 items-center bg-gray-dark mt-5">
-      <span className="tetx-[10px] text-accent-red mb-2">
+    <footer className="w-full py-5 flex flex-col gap-2 items-center justify-center bg-gray-dark mt-5">
+      <span className="text-[10px] xs:text-sm text-accent-red mb-2">
         Remember, this is not the real site (obviously). Please check out the
         real site{" "}
         <Link className="font-bold" href="https://spicychat.ai/">
@@ -63,25 +63,33 @@ export function Footer(): JSX.Element {
 
       <div className="flex flex-row gap-10 items-center">
         {socialLinks.map((link, index) => (
-          <Link key={index} className="font-bold text-sm" href={link.link}>
+          <Link
+            key={index}
+            className="font-bold text-[10px] xs:text-sm"
+            href={link.link}
+          >
             {link.linkName}
           </Link>
         ))}
       </div>
 
-      <div className="flex flex-row gap-3 items-center">
+      <div className="flex flex-row flex-wrap gap-3 items-center justify-center whitespace-pre-wrap">
         {links.map((link, index) => (
-          <Link key={index} className="text-xs" href={link.link}>
+          <Link
+            key={index}
+            className="text-[10px] xs:text-xs whitespace-nowrap"
+            href={link.link}
+          >
             {link.linkName}
           </Link>
         ))}
       </div>
 
-      <Link href="#" className="text-xs mt-5">
+      <Link href="#" className="text-[10px] xs:text-xs mt-5 text-accent-blue">
         18 U.S.C. 2257 Record-Keeping Requirements Compliance Statement.
       </Link>
 
-      <span className="text-[10px] mt-8">
+      <span className="text-[9px] mt-8 px-10">
         SpicyChat.ai is a site owned and operated by NextDay AI USA Inc. 2915
         Ogletown Road, Suite 4642, DE, 19713, USA
       </span>

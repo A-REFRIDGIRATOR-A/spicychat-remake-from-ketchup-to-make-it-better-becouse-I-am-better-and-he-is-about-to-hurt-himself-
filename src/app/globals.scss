@@ -66,5 +66,47 @@
            [box-shadow:#65778633_0px_0px_15px,_#65778626_0px_0px_3px_1px] 
            dark:[box-shadow:#ffffff33_0px_0px_15px,_#ffffff26_0px_0px_3px_1px];
     }
+
+    @keyframes slow-spin {
+      from {
+        transform: rotate(0deg);
+      }
+
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    .spin {
+      animation: slow-spin 28s linear infinite;
+    }
+
+    @keyframes slide-out {
+      from {
+        transform: translate(-100%);
+      }
+
+      to {
+        transform: translate(0);
+      }
+    }
+
+    @keyframes slide-in {
+      from {
+        transform: translate(0);
+      }
+
+      to {
+        transform: translate(-100%);
+      }
+    }
+
+    .animate-in {
+      animation: slide-in 200ms linear;
+    }
+
+    .animate-out {
+      animation: slide-out 200ms linear;
+    }
   }
 }

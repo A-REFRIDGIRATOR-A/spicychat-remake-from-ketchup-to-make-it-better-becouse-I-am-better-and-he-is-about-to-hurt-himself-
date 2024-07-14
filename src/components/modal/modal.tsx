@@ -1,78 +1,96 @@
-import { cn } from "../lib/cn";
-import { AnimatePresence, motion } from "framer-motion";
-import { Dialog } from "@headlessui/react";
-import type { ReactNode } from "react";
-import type { Variants } from "framer-motion";
+"use client";
 
-type ModalProps = {
+import { cn } from "../lib/cn";
+import { forwardRef } from "react";
+import { usePreventScroll } from "../lib/hooks/usePreventScroll";
+import type { ComponentPropsWithoutRef, ReactNode } from "react";
+
+type ModalProps = ComponentPropsWithoutRef<"div"> & {
+  allowScroll?: boolean;
   open: boolean;
+  closeOnClick?: boolean;
   children: ReactNode;
-  className?: string;
-  modalAnimation?: Variants;
   modalClassName?: string;
-  closePanelOnClick?: boolean;
+  overlayClassName?: string;
   closeModal: () => void;
 };
 
-const variants: Variants[] = [
-  {
-    initial: { opacity: 0 },
-    animate: { opacity: 1 },
-    exit: { opacity: 0 },
-  },
-  {
-    initial: { opacity: 0, scale: 0.8 },
-    animate: {
-      opacity: 1,
-      scale: 1,
-      transition: { type: "spring", duration: 0.5, bounce: 0.4 },
+const Modal = forwardRef<HTMLDivElement, ModalProps>(
+  (
+    {
+      allowScroll,
+      open,
+      closeOnClick,
+      className,
+      modalClassName,
+      overlayClassName,
+      children,
+      closeModal,
+      ...props
     },
-    exit: { opacity: 0, scale: 0.8, transition: { duration: 0.15 } },
-  },
-];
+    ref
+  ) => {
+    usePreventScroll({ isDisabled: allowScroll ?? !open });
 
-export const [backdrop, modal] = variants;
+    return (
+      <div
+        className={cn(
+          `fixed inset-0 z-[60] transition-all flex justify-center items-center
+          data-[open=true]:opacity-100 data-[open=true]:visible data-[open=false]:opacity-0
+          data-[open=false]:invisible`,
+          className
+        )}
+        data-open={open}
+      >
+        <ModalOverlay
+          className={overlayClassName}
+          closeOnClick={closeOnClick ?? false}
+          closeModal={closeModal}
+          data-open={open}
+        />
 
-export function Modal({
-  open,
-  children,
-  className,
-  modalAnimation,
-  modalClassName,
-  closePanelOnClick,
-  closeModal,
-}: ModalProps): JSX.Element {
-  return (
-    <AnimatePresence>
-      {open && (
-        <Dialog
-          className="relative z-50"
-          open={open}
-          onClose={closeModal}
-          static
+        <div
+          ref={ref}
+          className={cn(
+            "w-96 xs:w-96 h-96 rounded-lg bg-black z-[60] data-[open=true]:animate-out data-[open=false]:animate-in",
+            modalClassName
+          )}
+          data-open={open}
+          {...props}
         >
-          <motion.div
-            className="hover-animation fixed inset-0 bg-black/40 backdrop-blur-sm"
-            aria-hidden="true"
-            {...backdrop}
-          />
-          <div
-            className={cn(
-              "fixed inset-0 overflow-y-auto p-4",
-              className ?? "flex items-center justify-center"
-            )}
-          >
-            <Dialog.Panel
-              className={modalClassName}
-              as={motion.div}
-              {...(modalAnimation ?? modal)}
-              onClick={closePanelOnClick ? closeModal : undefined}
-            >
-              {children}
-            </Dialog.Panel>
-          </div>
-        </Dialog>
+          {children}
+        </div>
+      </div>
+    );
+  }
+);
+
+Modal.displayName = "Modal";
+
+type ModalOverlayProps = ComponentPropsWithoutRef<"div"> & {
+  closeOnClick: boolean;
+  closeModal: () => void;
+};
+
+const ModalOverlay = forwardRef<HTMLDivElement, ModalOverlayProps>(
+  ({ closeOnClick, className, children, closeModal, ...props }, ref) => (
+    <div
+      ref={ref}
+      className={cn(
+        `fixed inset-0 z-[60] transition-all transform-gpu flex bg-black/80
+        data-[open=true]:opacity-100 backdrop-blur-sm data-[open=true]:visible
+        data-[open=false]:opacity-0 data-[open=false]:invisible
+        [transition:visibility_400ms_ease_0ms,opacity_400ms_ease]`,
+        className
       )}
-    </AnimatePresence>
-  );
-}
+      onClick={closeOnClick ? closeModal : undefined}
+      {...props}
+    >
+      {children}
+    </div>
+  )
+);
+
+ModalOverlay.displayName = "ModalOverlay";
+
+export { Modal, ModalOverlay };

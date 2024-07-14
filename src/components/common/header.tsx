@@ -10,24 +10,13 @@ import { Modal } from "../modal/modal";
 import { MobileSidebarModal } from "../modal/mobile-sidebar-modal";
 import { useModal } from "../lib/hooks/useModal";
 import type { ChangeEvent } from "react";
-import type { Variants } from "framer-motion";
 
 type HeaderProps = {
-  sticky?: boolean;
+  disableSticky?: boolean;
   className?: string;
 };
 
-const variant: Variants = {
-  initial: { x: "-100%", opacity: 0.8 },
-  animate: {
-    x: -8,
-    opacity: 1,
-    transition: { type: "spring", duration: 0.8 },
-  },
-  exit: { x: "-100%", opacity: 0.8, transition: { duration: 0.4 } },
-};
-
-export function Header({ sticky, className }: HeaderProps): JSX.Element {
+export function Header({ disableSticky, className }: HeaderProps): JSX.Element {
   const [inputValue, setInputValue] = useState("");
 
   const handleChange = ({
@@ -46,7 +35,7 @@ export function Header({ sticky, className }: HeaderProps): JSX.Element {
         className={cn(
           `relative w-full h-20 hidden xs:flex flex-row gap-5
           items-center justify-center py-5 px-20 bg-black z-50`,
-          sticky && "sticky top-0",
+          !disableSticky && "sticky top-0",
           className
         )}
       >
@@ -75,6 +64,7 @@ export function Header({ sticky, className }: HeaderProps): JSX.Element {
           <CustomIcon className="w-9 h-9" iconName="BellIcon" />
         </div>
       </header>
+
       <header
         className={cn(
           `w-full h-20 xs:hidden flex flex-row gap-5
@@ -91,17 +81,18 @@ export function Header({ sticky, className }: HeaderProps): JSX.Element {
         <button className="ml-auto">
           <Avatar src="/assets/hq2.jpg" width={50} />
         </button>
-
-        <Modal
-          className="p-0 overflow-hidden"
-          modalAnimation={variant}
-          modalClassName="pl-2 min-h-screen w-72 bg-black shadow-xl shadow-black"
-          open={open}
-          closeModal={closeModal}
-        >
-          <MobileSidebarModal closeModal={closeModal} />
-        </Modal>
       </header>
+
+      <Modal
+        className="justify-normal"
+        modalClassName="h-full w-64 bg-black/20 backdrop-blur-md"
+        overlayClassName="bg-black/20"
+        open={open}
+        closeModal={closeModal}
+        closeOnClick
+      >
+        <MobileSidebarModal closeModal={closeModal} />
+      </Modal>
     </>
   );
 }

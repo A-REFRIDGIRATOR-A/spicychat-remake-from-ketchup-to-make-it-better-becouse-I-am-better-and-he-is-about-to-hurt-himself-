@@ -6,7 +6,6 @@ import type { RefObject } from "react";
 type UseClickOutsideReturn<T> = {
   ref: RefObject<T>;
   isClickedOutside: boolean;
-  setIsClickedOutside: (value: boolean) => void;
 };
 
 export function useClickOutside<T extends HTMLElement>(
@@ -37,5 +36,5 @@ export function useClickOutside<T extends HTMLElement>(
   }),
     [ref];
 
-  return { ref, isClickedOutside, setIsClickedOutside };
+  return { ref, isClickedOutside };
 }

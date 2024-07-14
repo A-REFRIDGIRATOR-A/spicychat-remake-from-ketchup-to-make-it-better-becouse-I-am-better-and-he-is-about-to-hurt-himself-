@@ -39,18 +39,17 @@ const Dropdown = forwardRef<HTMLDivElement, DropdownProps>(
 
 Dropdown.displayName = "Dropdown";
 
-type DropdownButtonProps = ComponentPropsWithoutRef<"div"> & {
-  action?: () => void;
-};
+type DropdownButtonProps = ComponentPropsWithoutRef<"div"> & {};
 
 const DropdownButton = forwardRef<HTMLDivElement, DropdownButtonProps>(
-  ({ className, children, action, ...props }, ref) => (
+  ({ className, children, ...props }, ref) => (
     <div
       ref={ref}
-      className={cn("hover:cursor-pointer", className)}
-      onClick={() => {
-        action?.();
-      }}
+      className={cn(
+        "hover:cursor-pointer flex items-center justify-center",
+        className
+      )}
+      onClick={() => {}}
       {...props}
     >
       {children}
@@ -97,11 +96,18 @@ export type DropdownButtonItem = {
   callback?: (arg: any) => void;
 };
 
-type DropdownItemProps = ComponentPropsWithoutRef<"button"> & {};
+type DropdownItemProps = ComponentPropsWithoutRef<"button"> & {
+  action?: () => void;
+};
 
 const DropdownItem = forwardRef<HTMLButtonElement, DropdownItemProps>(
-  ({ className, children, ...props }, ref) => (
-    <button ref={ref} className={cn("", className)} {...props}>
+  ({ className, children, action, ...props }, ref) => (
+    <button
+      ref={ref}
+      className={cn("", className)}
+      onClick={() => action?.()}
+      {...props}
+    >
       {children}
     </button>
   )
