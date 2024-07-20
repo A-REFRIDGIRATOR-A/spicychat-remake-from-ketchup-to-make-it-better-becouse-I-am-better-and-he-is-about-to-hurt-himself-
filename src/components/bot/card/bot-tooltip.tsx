@@ -31,7 +31,6 @@ export function BotTooltip({ bot, user }: BotTooltipProps): JSX.Element {
 
         <DefinitionButton
           className="hover:scale-105"
-          href={`/character/${bot.id}`}
           bot={bot}
         />
 
