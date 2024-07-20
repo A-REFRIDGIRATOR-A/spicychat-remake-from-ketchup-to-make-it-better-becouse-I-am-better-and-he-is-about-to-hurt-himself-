@@ -4,9 +4,10 @@ type BotCardGlowProps = {
   src: string;
 };
 
+/** Causes repeated error on mobile (Safari) */
 export function BotCardGlow({ src }: BotCardGlowProps): JSX.Element {
   return (
-    <div className="non-selectable absolute inset-0 -z-10 blur-2xl">
+    <div className="non-selectable absolute inset-0 -z-10 hidden blur-2xl xs:block">
       <NextImage
         imgClassName="pointer-events-none"
         src={
@@ -14,14 +15,17 @@ export function BotCardGlow({ src }: BotCardGlowProps): JSX.Element {
             ? "https://ndsc.b-cdn.net/" + src
             : "/assets/harley.png"
         }
-        alt="Harley Quinn"
+        alt={src}
         layout="fill"
         draggable={false}
-        useSkeleton
         quality={50}
+        useSkeleton
         unoptimized
       />
-      <div className="absolute inset-0 bg-gradient-to-t from-black from-40% via-transparent to-transparent mt-10" />
+      <div
+        className="absolute inset-0 mt-10 bg-gradient-to-t from-black from-40% via-transparent
+          to-transparent"
+      />
     </div>
   );
 }

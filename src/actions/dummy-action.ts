@@ -1,7 +1,7 @@
 "use server";
 
 export async function dummyAction() {
-  console.log("[dummyAction] Prentend this is some useful data.");
+  console.log("[dummyAction] Pretend this is some useful data.");
 
   return {
     data: {

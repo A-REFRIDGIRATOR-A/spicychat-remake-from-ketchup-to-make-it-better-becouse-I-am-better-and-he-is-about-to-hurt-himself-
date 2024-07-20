@@ -9,12 +9,9 @@ import { BotsContainer } from "../components/home/bots-container";
 import { BotCard } from "../components/bot/card/bot-card";
 import { FilterOptionsFallback } from "@/components/fallbacks/filter-options-fallback";
 import { getBots } from "@/actions/get-bots";
-import { Modal } from "@/components/modal/modal";
 
 export default async function Home() {
   const data = await getBots();
-
-  //console.log(data);
 
   function DummyBots(): JSX.Element {
     return (

@@ -1,16 +1,56 @@
 "use client";
 
 import { cn } from "../lib/cn";
-import { forwardRef } from "react";
+import { forwardRef, useEffect, useRef, useState } from "react";
 import { usePreventScroll } from "../lib/hooks/usePreventScroll";
+import { createPortal } from "react-dom";
+import { preventBubbling } from "../lib/utils";
 import type { ComponentPropsWithoutRef, ReactNode } from "react";
+
+type ModalPortalProps = ComponentPropsWithoutRef<"div"> & {};
+
+const ModalPortal = forwardRef<HTMLDivElement, ModalPortalProps>(
+  ({ children, ...props }, ref) => {
+    const element = useRef<HTMLElement | null>(null);
+
+    const [mounted, setMounted] = useState(false);
+
+    useEffect(() => {
+      if (typeof document === "undefined") return;
+
+      element.current = document.createElement("div");
+
+      document.body.appendChild(element.current);
+
+      setMounted(true);
+
+      return () => {
+        if (element.current) {
+          document.body.removeChild(element.current);
+        }
+      };
+    }, []);
+
+    if (!mounted || !element.current) {
+      return null;
+    }
+
+    return createPortal(
+      <div ref={ref} {...props}>
+        {children}
+      </div>,
+      element.current,
+    );
+  },
+);
+
+ModalPortal.displayName = "ModalPortal";
 
 type ModalProps = ComponentPropsWithoutRef<"div"> & {
   allowScroll?: boolean;
   open: boolean;
   closeOnClick?: boolean;
   children: ReactNode;
-  modalClassName?: string;
   overlayClassName?: string;
   closeModal: () => void;
 };
@@ -22,47 +62,40 @@ const Modal = forwardRef<HTMLDivElement, ModalProps>(
       open,
       closeOnClick,
       className,
-      modalClassName,
       overlayClassName,
       children,
       closeModal,
       ...props
     },
-    ref
+    ref,
   ) => {
     usePreventScroll({ isDisabled: allowScroll ?? !open });
 
     return (
-      <div
-        className={cn(
-          `fixed inset-0 z-[60] transition-all flex justify-center items-center
-          data-[open=true]:opacity-100 data-[open=true]:visible data-[open=false]:opacity-0
-          data-[open=false]:invisible`,
-          className
-        )}
-        data-open={open}
-      >
+      <ModalPortal>
         <ModalOverlay
-          className={overlayClassName}
-          closeOnClick={closeOnClick ?? false}
+          className={cn("", overlayClassName)}
           closeModal={closeModal}
+          closeOnClick={closeOnClick ?? false}
           data-open={open}
-        />
-
-        <div
-          ref={ref}
-          className={cn(
-            "w-96 xs:w-96 h-96 rounded-lg bg-black z-[60] data-[open=true]:animate-out data-[open=false]:animate-in",
-            modalClassName
-          )}
-          data-open={open}
-          {...props}
         >
-          {children}
-        </div>
-      </div>
+          <div
+            ref={ref}
+            className={cn(
+              `data-[open=true]:animate-out data-[open=false]:animate-in z-[70] h-96 w-96
+              overflow-hidden rounded-lg bg-black`,
+              className,
+            )}
+            onClick={preventBubbling()}
+            data-open={open}
+            {...props}
+          >
+            {children}
+          </div>
+        </ModalOverlay>
+      </ModalPortal>
     );
-  }
+  },
 );
 
 Modal.displayName = "Modal";
@@ -77,20 +110,20 @@ const ModalOverlay = forwardRef<HTMLDivElement, ModalOverlayProps>(
     <div
       ref={ref}
       className={cn(
-        `fixed inset-0 z-[60] transition-all transform-gpu flex bg-black/80
-        data-[open=true]:opacity-100 backdrop-blur-sm data-[open=true]:visible
-        data-[open=false]:opacity-0 data-[open=false]:invisible
-        [transition:visibility_400ms_ease_0ms,opacity_400ms_ease]`,
-        className
+        `invisible fixed inset-0 z-[60] flex items-center justify-center opacity-0
+        backdrop-blur-md transition-all
+        [transition:visibility_400ms_ease_0ms,opacity_400ms_ease]
+        data-[open=true]:visible data-[open=true]:opacity-100`,
+        className,
       )}
-      onClick={closeOnClick ? closeModal : undefined}
+      onClick={preventBubbling(closeOnClick ? closeModal : undefined)}
       {...props}
     >
       {children}
     </div>
-  )
+  ),
 );
 
 ModalOverlay.displayName = "ModalOverlay";
 
-export { Modal, ModalOverlay };
+export { ModalPortal, Modal, ModalOverlay };

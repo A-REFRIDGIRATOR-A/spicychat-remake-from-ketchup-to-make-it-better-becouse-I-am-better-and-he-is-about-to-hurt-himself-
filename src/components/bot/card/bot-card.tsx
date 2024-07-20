@@ -36,14 +36,9 @@ export function BotCard({ bot, recommended }: BotCardProps): JSX.Element {
         </p>
 
         <div className="flex flex-row items-center gap-3 w-full">
-          <div className="group/user">
-            <UserTooltip user={dummyUser} />
-            <Avatar src="/assets/hq2.jpg" width={40} />
-          </div>
-
-          <p className="font-bold w-44 overflow-hidden whitespace-nowrap overflow-ellipsis">
+          <span className="font-bold w-44 overflow-hidden whitespace-nowrap overflow-ellipsis">
             {bot.name}
-          </p>
+          </span>
 
           <button className="ml-auto">
             <CustomIcon

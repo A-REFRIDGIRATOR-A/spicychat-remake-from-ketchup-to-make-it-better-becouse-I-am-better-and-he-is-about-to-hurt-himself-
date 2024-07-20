@@ -17,8 +17,9 @@ export function OnboardingBanner(): JSX.Element {
         <Image
           className="object-cover absolute inset-0 scale-125 pointer-events-none"
           src="/assets/onboardingBannerDark.svg" // Credit Spicychat: https://spicychat.ai/Assets/onboardingBannerDark.svg
-          alt=""
+          alt="oboarding-banner"
           fill
+          priority
         />
 
         <div className="w-full h-full px-4 xs:px-20 py-2 flex flex-col xs:items-start [&_*]:z-10">
@@ -53,6 +54,7 @@ export function OnboardingBanner(): JSX.Element {
           <button
             className="absolute top-2.5 right-2.5 z-[10]"
             onClick={handleClick}
+            aria-label="close-banner"
           >
             <CustomIcon iconName="XMarkIcon" />
           </button>

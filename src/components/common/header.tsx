@@ -31,6 +31,7 @@ export function Header({ disableSticky, className }: HeaderProps): JSX.Element {
       <div className="w-full h-6 text-center bg-accent-red font-bold">
         <span>Unofficial Spicychat fanmade remake. (WIP)</span>
       </div>
+
       <header
         className={cn(
           `relative w-full h-20 hidden xs:flex flex-row gap-5
@@ -42,6 +43,7 @@ export function Header({ disableSticky, className }: HeaderProps): JSX.Element {
         <Link
           href="/"
           className="hover:scale-110 transition-transform duration-500 absolute left-20"
+          aria-label="spicychat"
         >
           <CustomIcon className="w-10 h-10" iconName="SpicyChatLogo" />
         </Link>
@@ -60,7 +62,9 @@ export function Header({ disableSticky, className }: HeaderProps): JSX.Element {
             inputValue={inputValue}
             handleChange={handleChange}
           />
-          <Avatar src="/assets/hq2.jpg" width={50} />
+
+          <Avatar src="/assets/hq.jpg" width={50} />
+
           <CustomIcon className="w-9 h-9" iconName="BellIcon" />
         </div>
       </header>
@@ -75,18 +79,19 @@ export function Header({ disableSticky, className }: HeaderProps): JSX.Element {
         <button onClick={openModal}>
           <CustomIcon className="w-10 h-10" iconName="Settings" />
         </button>
-        <Link href="/">
+
+        <Link href="/" aria-label="spicychat">
           <CustomIcon className="w-10 h-10" iconName="SpicyChatLogo" />
         </Link>
+
         <button className="ml-auto">
-          <Avatar src="/assets/hq2.jpg" width={50} />
+          <Avatar src="/assets/hq.jpg" width={50} />
         </button>
       </header>
 
       <Modal
-        className="justify-normal"
-        modalClassName="h-full w-64 bg-black/20 backdrop-blur-md"
-        overlayClassName="bg-black/20"
+        className="h-full w-64 bg-black/20 backdrop-blur-md rounded-none overflow-visible"
+        overlayClassName="bg-black/20 justify-normal"
         open={open}
         closeModal={closeModal}
         closeOnClick

@@ -3,7 +3,7 @@ import { cn } from "@/components/lib/cn";
 import { Badge } from "@/components/ui/badge";
 import { NextImage } from "@/components/ui/next-image";
 import { FavoriteBotButton } from "./favorite-bot-button";
-import { BotTooltip } from "./bot-tooltip";
+//import { BotTooltip } from "./bot-tooltip";
 import { DefinitionButton } from "./definition-button";
 import type { User } from "@/components/lib/types/user";
 import type { Bot } from "@/components/lib/types/bot";
@@ -21,7 +21,7 @@ export function BotCardContent({
 }: BotCardContentProps): JSX.Element {
   return (
     <div className="relative group/img">
-      <Link href="#">
+      <Link href={`/character/${bot.id}`}>
         {recommended && (
           <Badge
             className="absolute -top-3 left-9 right-9 z-10 xs:text-sm
@@ -32,29 +32,22 @@ export function BotCardContent({
         )}
         <div className="relative rounded-md overflow-hidden duration-1000 h-40 xs:h-52">
           <FavoriteBotButton
-            buttonClassName="flex xs:hidden z-10 top-1 left-1"
+            buttonClassName="z-10 top-1 left-1"
             className="w-6 h-6"
           />
 
           <DefinitionButton
-            className="xs:hidden block"
             iconClassName={cn(bot.definition_visible && "text-accent-purple")}
-            href={`/character/${bot.id}`}
-          />
-
-          <DefinitionButton
-            className="hidden xs:block"
-            href={`/character/${bot.id}`}
-            hideButton={!bot.definition_visible}
-            disable
+            bot={bot}
           />
 
           <div
-            className="non-selectable w-full h-full xs:group-hover:scale-105
+            className="non-selectable w-full h-full
                       transition-all duration-500"
           >
             <NextImage
               imgClassName="pointer-events-none"
+              blurClassName="rounded-md animate-pulse bg-[#71767B]"
               src={
                 bot.avatar_url !== "/assets/harley.png"
                   ? "https://ndsc.b-cdn.net/" + bot.avatar_url
@@ -69,7 +62,7 @@ export function BotCardContent({
         </div>
       </Link>
 
-      <BotTooltip bot={bot} user={user} />
+      {/* <BotTooltip bot={bot} user={user} /> */}
     </div>
   );
 }
