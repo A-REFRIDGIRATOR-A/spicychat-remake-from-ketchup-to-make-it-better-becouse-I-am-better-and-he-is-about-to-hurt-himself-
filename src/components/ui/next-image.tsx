@@ -40,10 +40,10 @@ export function NextImage({
         className={cn(
           imgClassName,
           loading
-            ? blurClassName ?? "animate-pulse bg-[#71767B]"
+            ? (blurClassName ?? "animate-pulse bg-[#71767B]")
             : previewCount === 1
-            ? "!h-auto !min-h-0 !w-auto !min-w-0 rounded-lg object-contain"
-            : "object-cover"
+              ? "!h-auto !min-h-0 !w-auto !min-w-0 rounded-lg object-contain"
+              : "object-cover",
         )}
         src={src}
         alt={alt}
@@ -51,6 +51,7 @@ export function NextImage({
         height={height}
         onLoad={handleLoad}
         layout="responsive"
+        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
         {...rest}
       />
     </figure>

@@ -28,27 +28,27 @@ export function Header({ disableSticky, className }: HeaderProps): JSX.Element {
 
   return (
     <>
-      <div className="w-full h-6 text-center bg-accent-red font-bold">
+      <div className="h-6 w-full bg-accent-red text-center font-bold">
         <span>Unofficial Spicychat fanmade remake. (WIP)</span>
       </div>
 
       <header
         className={cn(
-          `relative w-full h-20 hidden xs:flex flex-row gap-5
-          items-center justify-center py-5 px-20 bg-black z-50`,
+          `relative z-50 hidden h-20 w-full flex-row items-center justify-center gap-5
+          bg-black px-20 py-5 xs:flex`,
           !disableSticky && "sticky top-0",
-          className
+          className,
         )}
       >
         <Link
           href="/"
-          className="hover:scale-110 transition-transform duration-500 absolute left-20"
+          className="absolute left-20 transition-transform duration-500 hover:scale-110"
           aria-label="spicychat"
         >
-          <CustomIcon className="w-10 h-10" iconName="SpicyChatLogo" />
+          <CustomIcon className="h-10 w-10" iconName="SpicyChatLogo" />
         </Link>
 
-        <div className="flex flex-row items-center justify-around gap-3 w-">
+        <div className="w- flex flex-row items-center justify-around gap-3">
           <p>Chats</p>
           <p>Create</p>
           <p>My Chatbots</p>
@@ -65,23 +65,23 @@ export function Header({ disableSticky, className }: HeaderProps): JSX.Element {
 
           <Avatar src="/assets/hq.jpg" width={50} />
 
-          <CustomIcon className="w-9 h-9" iconName="BellIcon" />
+          <CustomIcon className="h-9 w-9" iconName="BellIcon" />
         </div>
       </header>
 
       <header
         className={cn(
-          `w-full h-20 xs:hidden flex flex-row gap-5
-          items-center py-5 px-3 sticky top-0 z-50 backdrop-blur-lg`,
-          className
+          `sticky top-0 z-50 flex h-20 w-full flex-row items-center gap-5 px-3 py-5
+          backdrop-blur-lg xs:hidden`,
+          className,
         )}
       >
         <button onClick={openModal}>
-          <CustomIcon className="w-10 h-10" iconName="Settings" />
+          <CustomIcon className="h-10 w-10" iconName="Settings" />
         </button>
 
         <Link href="/" aria-label="spicychat">
-          <CustomIcon className="w-10 h-10" iconName="SpicyChatLogo" />
+          <CustomIcon className="h-10 w-10" iconName="SpicyChatLogo" />
         </Link>
 
         <button className="ml-auto">
@@ -90,11 +90,13 @@ export function Header({ disableSticky, className }: HeaderProps): JSX.Element {
       </header>
 
       <Modal
-        className="h-full w-64 bg-black/20 backdrop-blur-md rounded-none overflow-visible"
+        className="data-[open=true]:animate-out data-[open=false]:animate-in h-full w-64
+          overflow-visible rounded-none bg-black/20 backdrop-blur-md"
         overlayClassName="bg-black/20 justify-normal"
         open={open}
         closeModal={closeModal}
         closeOnClick
+        defaultAnimation={false}
       >
         <MobileSidebarModal closeModal={closeModal} />
       </Modal>

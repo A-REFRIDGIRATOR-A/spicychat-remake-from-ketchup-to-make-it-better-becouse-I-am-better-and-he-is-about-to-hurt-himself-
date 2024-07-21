@@ -4,12 +4,11 @@ import { getBot } from "@/actions/get-bot";
 import { Footer } from "@/components/common/footer";
 import { Header } from "@/components/common/header";
 import { MainContainer } from "@/components/common/main-container";
-import { OnboardingBanner } from "@/components/home/onboarding-banner";
 import { MainLayout } from "@/components/layout/main-layout";
-import { Bot } from "@/components/lib/types/bot";
 import { NextImage } from "@/components/ui/next-image";
 import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
+import type { Bot } from "@/components/lib/types/bot";
 
 export default function Home() {
   const { id } = useParams();
@@ -39,34 +38,20 @@ export default function Home() {
       <MainContainer>
         <Header />
 
-        <OnboardingBanner />
-
         {loading ? (
           <span>Loading...</span>
         ) : !bot ? (
           <span>Bot not found</span>
         ) : (
-          <div className="flex flex-row gap-3 mt-10">
-            <div className="flex flex-col gap-3">
-              <div className="w-96 h-96 relative">
-                <NextImage
-                  imgClassName="z-30 rounded-2xl overflow-hidden"
-                  src={src}
-                  alt={bot.id}
-                  layout="fill"
-                  useSkeleton
-                />
+          <div className="flex flex-row gap-3">
+            <div className="relative h-96 w-full">
+              <NextImage src={src} alt={bot.id} layout="fill" useSkeleton />
 
-                <div className="absolute inset-0 rounded-2xl blur-lg">
-                  <NextImage src={src} alt={bot.id} layout="fill" useSkeleton />
-                </div>
+              <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent" />
+
+              <div className="absolute inset-0 flex flex-col justify-end gap-3 p-5">
+                <h1 className="text-3xl font-semibold">{bot.name}</h1>
               </div>
-
-              <h1 className="text-3xl text-center p-3 bg-dark-border/50 rounded-2xl font-semibold">
-                {bot.name}
-              </h1>
-
-              <p className="p-3 bg-dark-border/50 rounded-2xl">{bot.title}</p>
             </div>
           </div>
         )}

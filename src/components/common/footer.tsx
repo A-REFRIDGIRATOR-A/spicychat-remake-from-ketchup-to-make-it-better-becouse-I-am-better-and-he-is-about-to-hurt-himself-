@@ -60,8 +60,8 @@ const links = [
 
 export function Footer(): JSX.Element {
   return (
-    <footer className="w-full py-5 flex flex-col gap-2 items-center justify-center bg-gray-dark mt-5">
-      <span className="text-[10px] xs:text-sm text-accent-red mb-2">
+    <footer className="mt-5 flex w-full flex-col items-center justify-center gap-2 bg-gray-dark py-5">
+      <span className="mb-2 text-[10px] text-accent-red xs:text-sm">
         Remember, this is not the real site (obviously). Please check out the
         real site{" "}
         <Link
@@ -74,25 +74,28 @@ export function Footer(): JSX.Element {
         .
       </span>
 
-      <div className="flex flex-row gap-7 items-center mb-3">
+      <div className="mb-3 flex flex-row items-center gap-7">
         {socialLinks.map((link, index) => (
           <Link
             key={index}
-            className="font-bold text-[10px] xs:text-xs flex flex-row items-center gap-3"
+            className="flex flex-row items-center gap-3 text-[10px] font-bold xs:text-xs"
             href={link.link}
           >
-            <CustomIcon className="w-5 h-5" iconName={link.iconName} />
+            <CustomIcon
+              className="h-4 w-4 xs:h-5 xs:w-5"
+              iconName={link.iconName}
+            />
 
             {link.linkName}
           </Link>
         ))}
       </div>
 
-      <div className="flex flex-row flex-wrap gap-3 items-center justify-center whitespace-pre-wrap">
+      <div className="flex flex-row flex-wrap items-center justify-center gap-3 whitespace-pre-wrap">
         {links.map((link, index) => (
           <Link
             key={index}
-            className="text-[10px] xs:text-xs whitespace-nowrap"
+            className="whitespace-nowrap text-[10px] xs:text-xs"
             href={link.link}
           >
             {link.linkName}
@@ -100,11 +103,11 @@ export function Footer(): JSX.Element {
         ))}
       </div>
 
-      <Link href="#" className="text-[10px] xs:text-xs mt-5 text-accent-blue">
+      <Link href="#" className="mt-5 text-[10px] text-accent-blue xs:text-xs">
         18 U.S.C. 2257 Record-Keeping Requirements Compliance Statement.
       </Link>
 
-      <span className="text-[9px] mt-8 px-10">
+      <span className="mt-8 px-10 text-[9px]">
         SpicyChat.ai is a site owned and operated by NextDay AI USA Inc. 2915
         Ogletown Road, Suite 4642, DE, 19713, USA
       </span>

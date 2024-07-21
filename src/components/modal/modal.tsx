@@ -25,7 +25,7 @@ const ModalPortal = forwardRef<HTMLDivElement, ModalPortalProps>(
       setMounted(true);
 
       return () => {
-        if (element.current) {
+        if (element.current && document.body.contains(element.current)) {
           document.body.removeChild(element.current);
         }
       };
@@ -50,8 +50,9 @@ type ModalProps = ComponentPropsWithoutRef<"div"> & {
   allowScroll?: boolean;
   open: boolean;
   closeOnClick?: boolean;
-  children: ReactNode;
   overlayClassName?: string;
+  defaultAnimation?: boolean; // Hate this
+  children: ReactNode;
   closeModal: () => void;
 };
 
@@ -63,6 +64,7 @@ const Modal = forwardRef<HTMLDivElement, ModalProps>(
       closeOnClick,
       className,
       overlayClassName,
+      defaultAnimation = true,
       children,
       closeModal,
       ...props
@@ -82,8 +84,9 @@ const Modal = forwardRef<HTMLDivElement, ModalProps>(
           <div
             ref={ref}
             className={cn(
-              `data-[open=true]:animate-out data-[open=false]:animate-in z-[70] h-96 w-96
-              overflow-hidden rounded-lg bg-black`,
+              "z-[70] h-96 w-96 overflow-hidden rounded-lg bg-black",
+              defaultAnimation &&
+                "data-[open=true]:modal-open data-[open=false]:modal-exit",
               className,
             )}
             onClick={preventBubbling()}

@@ -9,13 +9,14 @@ import { CustomIcon } from "@/components/ui/custom-icon";
 import { DefinitionModalFallback } from "@/components/fallbacks/modal/definition-fallback";
 import type { Bot } from "@/components/lib/types/bot";
 
-const DefinitionModal = dynamic(() =>
-  import("@/components/modal/definition-modal").then(
-    (mod) => mod.DefinitionModal,
-  ),
+const DefinitionModal = dynamic(
+  () =>
+    import("@/components/modal/definition-modal").then(
+      (mod) => mod.DefinitionModal,
+    ),
   {
-    loading: () => <DefinitionModalFallback />
-  }
+    loading: () => <DefinitionModalFallback />,
+  },
 );
 
 type DefinitionButtonProps = {
@@ -33,13 +34,12 @@ export function DefinitionButton({
   hideButton,
   disable,
 }: DefinitionButtonProps): JSX.Element {
-  const { open, safeOpen, openModal, closeModal } = useModal({ timer: 500 });
+  const { open, safeOpen, openModal, closeModal } = useModal({ timer: 90 });
 
   return (
     <>
       <Modal
-        className="bg-trnsaprent data-[open=true]:modal-open data-[open=false]:modal-exit
-          overflow-visible xs:w-[30rem]"
+        className="overflow-visible xs:w-[30rem]"
         overlayClassName="bg-black/50"
         open={safeOpen}
         closeModal={closeModal}
