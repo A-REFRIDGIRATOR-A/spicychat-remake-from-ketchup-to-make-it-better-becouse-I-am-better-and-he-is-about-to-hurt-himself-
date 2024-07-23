@@ -10,7 +10,7 @@ import { BotCard } from "../components/bot/card/bot-card";
 import { FilterOptionsFallback } from "@/components/fallbacks/filter-options-fallback";
 import { getBots } from "@/actions/get-bots";
 
-export default async function Home() {
+async function ShowcaseBots() {
   const data = await getBots();
 
   function DummyBots(): JSX.Element {
@@ -23,6 +23,14 @@ export default async function Home() {
     );
   }
 
+  return (
+    <BotsContainer className="mt-5 xs:mt-10">
+      <DummyBots />
+    </BotsContainer>
+  );
+}
+
+export default function Home() {
   // if (typeof window === "undefined") {
   //   console.log("we are a sever component");
   // } else console.log("we are a client component");
@@ -38,9 +46,9 @@ export default async function Home() {
           <FilterOptions />
         </Suspense>
 
-        <BotsContainer className="mt-5 xs:mt-10">
-          <DummyBots />
-        </BotsContainer>
+        <Suspense fallback={<div>Loading...</div>}>
+          <ShowcaseBots />
+        </Suspense>
 
         <Footer />
       </MainContainer>
