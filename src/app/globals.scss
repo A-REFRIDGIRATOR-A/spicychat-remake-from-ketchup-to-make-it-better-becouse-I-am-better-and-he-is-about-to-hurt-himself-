@@ -32,11 +32,13 @@
 
   input:-webkit-autofill,
   input:-webkit-autofill:focus {
-    transition: background-color 0s 600000s, color 0s 600000s;
+    transition:
+      background-color 0s 600000s,
+      color 0s 600000s;
   }
 
   body {
-    @apply text-white bg-black;
+    @apply bg-black text-white;
   }
 
   @layer components {
@@ -57,28 +59,11 @@
     }
 
     .custom-underline {
-      @apply hover-animation underline decoration-transparent outline-none transition [text-decoration-thickness:1px] 
-             hover:decoration-inherit focus-visible:decoration-inherit;
+      @apply hover-animation underline decoration-transparent outline-none transition [text-decoration-thickness:1px] hover:decoration-inherit focus-visible:decoration-inherit;
     }
 
     .outline-glow {
-      @apply z-10 rounded-md bg-black outline-none 
-           [box-shadow:#65778633_0px_0px_15px,_#65778626_0px_0px_3px_1px] 
-           dark:[box-shadow:#ffffff33_0px_0px_15px,_#ffffff26_0px_0px_3px_1px];
-    }
-
-    @keyframes slow-spin {
-      from {
-        transform: rotate(0deg);
-      }
-
-      to {
-        transform: rotate(360deg);
-      }
-    }
-
-    .spin {
-      animation: slow-spin 28s linear infinite;
+      @apply z-10 rounded-md bg-black outline-none [box-shadow:#65778633_0px_0px_15px,_#65778626_0px_0px_3px_1px] dark:[box-shadow:#ffffff33_0px_0px_15px,_#ffffff26_0px_0px_3px_1px];
     }
 
     @keyframes slide-out {
@@ -154,14 +139,18 @@
     .modal-open {
       opacity: 1;
       transform: scale(1);
-      animation: fadeIn 0.3s forwards, scaleIn 0.3s forwards;
+      animation:
+        fadeIn 0.3s forwards,
+        scaleIn 0.3s forwards;
     }
 
     /* Animate to hidden state */
     .modal-exit {
       opacity: 0;
       transform: scale(0.8);
-      animation: fadeOut 0.15s forwards, scaleOut 0.15s forwards;
+      animation:
+        fadeOut 0.15s forwards,
+        scaleOut 0.15s forwards;
     }
   }
 }

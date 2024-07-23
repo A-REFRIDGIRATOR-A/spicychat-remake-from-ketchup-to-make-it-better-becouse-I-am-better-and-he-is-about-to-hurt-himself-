@@ -20,29 +20,29 @@ export function BotCard({ bot, recommended }: BotCardProps): JSX.Element {
 
   return (
     <div
-      className="flex flex-col gap-3 group w-44 xs:w-52 bg-black cursor-pointer transition-all
-                 duration-300 z-0 xs:hover:z-10 xs:hover:scale-105"
+      className="group z-0 flex w-44 cursor-pointer flex-col gap-3 bg-black transition-all
+        duration-300 xs:w-52 xs:hover:z-10 xs:hover:scale-105"
     >
       <BotCardContent bot={bot} user={dummyUser} recommended={recommended} />
 
-      <div className="flex flex-col items-center gap-3 w-full">
-        <div className="flex flex-row items-center gap-3 w-full">
+      <div className="flex w-full flex-col items-center gap-3">
+        <div className="flex w-full flex-row items-center gap-3">
           <CustomIcon className="w-4" iconName="MessageIcon" />
           <p className="text-xs">{formatNumber(bot.num_messages, "shorten")}</p>
         </div>
 
-        <p className="w-full text-ellipsis h-14 xs:h-10 overflow-hidden text-sm">
+        <p className="h-14 w-full overflow-hidden text-ellipsis text-sm xs:h-10">
           <span className="line-clamp-3 xs:line-clamp-2">{bot.title}</span>
         </p>
 
-        <div className="flex flex-row items-center gap-3 w-full">
-          <span className="font-bold w-44 overflow-hidden whitespace-nowrap overflow-ellipsis">
+        <div className="flex w-full flex-row items-center gap-3">
+          <span className="w-44 overflow-hidden overflow-ellipsis whitespace-nowrap font-bold">
             {bot.name}
           </span>
 
           <button className="ml-auto">
             <CustomIcon
-              className="w-8 h-8 xs:w-6 xs:h-6 hover:text-white/70 active:text-white/50"
+              className="h-8 w-8 hover:text-white/70 active:text-white/50 xs:h-6 xs:w-6"
               iconName="EllipsisIcon"
             />
           </button>

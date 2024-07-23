@@ -12,18 +12,21 @@ export function OnboardingBanner(): JSX.Element {
   if (hidden) return <></>;
 
   return (
-    <div className="w-full h-72 xs:h-48 px-5">
-      <div className="overflow-hidden rounded-2xl relative w-full h-full shadow-[0px_2px_6px_rgba(250,250,250,0.5)_inset]">
+    <div className="h-72 w-full px-5 xs:h-48">
+      <div
+        className="relative h-full w-full overflow-hidden rounded-2xl
+          shadow-[0px_2px_6px_rgba(250,250,250,0.5)_inset]"
+      >
         <Image
-          className="object-cover absolute inset-0 scale-125 pointer-events-none"
+          className="pointer-events-none absolute inset-0 scale-125 object-cover"
           src="/assets/onboardingBannerDark.svg" // Credit Spicychat: https://spicychat.ai/Assets/onboardingBannerDark.svg
           alt="oboarding-banner"
           fill
           priority
         />
 
-        <div className="w-full h-full px-4 xs:px-20 py-2 flex flex-col xs:items-start [&_*]:z-10">
-          <span className="text-sm xs:text-[22px] text- font-semibold text-center xs:text-left mb-3 xs:mb-0">
+        <div className="flex h-full w-full flex-col px-4 py-2 xs:items-start xs:px-20 [&_*]:z-10">
+          <span className="text- mb-3 text-center text-sm font-semibold xs:mb-0 xs:text-left xs:text-[22px]">
             Welcome to your ultimate destination for personalized, uncensored
             roleplaying
           </span>
@@ -34,8 +37,8 @@ export function OnboardingBanner(): JSX.Element {
           </span>
 
           <ul
-            className="text-sm *:list-disc xs:grid-cols-2 grid grid-cols-1
-                      max-w-[700px] text-white list-disc pl-4 mt-5 whitespace-nowrap -space-y-1"
+            className="*:list-disc mt-5 grid max-w-[700px] list-disc grid-cols-1 -space-y-1
+              whitespace-nowrap pl-4 text-sm text-white xs:grid-cols-2"
           >
             <li>Library of 200,000+ chatbots</li>
             <li>NSFW content</li>
@@ -45,14 +48,14 @@ export function OnboardingBanner(): JSX.Element {
           </ul>
 
           <button
-            className="xs:absolute xs:right-10 xs:top-[40%] xs:border rounded-full xs:px-5 px-0 py-1 text-xl font-bold xs:bg-black/5
-                      xs:mt-0 mt-auto bg-white text-black xs:text-white"
+            className="mt-auto rounded-full bg-white px-0 py-1 text-xl font-bold text-black xs:absolute
+              xs:right-10 xs:top-[40%] xs:mt-0 xs:border xs:bg-black/5 xs:px-5 xs:text-white"
           >
             Create Free Account
           </button>
 
           <button
-            className="absolute top-2.5 right-2.5 z-[10]"
+            className="absolute right-2.5 top-2.5 z-[10]"
             onClick={handleClick}
             aria-label="close-banner"
           >

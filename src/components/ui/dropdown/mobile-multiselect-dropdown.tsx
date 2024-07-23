@@ -9,6 +9,7 @@ import {
 import type { ChangeEvent } from "react";
 
 type MobileMultiselectDropdownProps = {
+  open: boolean;
   items: string[];
   label?: string;
   className?: string;
@@ -16,13 +17,15 @@ type MobileMultiselectDropdownProps = {
   itemClassName?: string;
   selectedOptions: string[];
   buttonClassName?: string;
+  handleClick: () => void;
   handleItemClick: (label?: string) => void;
   handleChange: (
-    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => void;
 };
 
 export function MobileMultiselectDropdown({
+  open,
   items,
   label,
   className,
@@ -30,28 +33,25 @@ export function MobileMultiselectDropdown({
   itemClassName,
   selectedOptions,
   buttonClassName,
+  handleClick,
   handleItemClick,
   handleChange,
 }: MobileMultiselectDropdownProps): JSX.Element {
   return (
     <>
-      <InputField
-        className="flex xs:hidden"
-        inputClassName="bg-inherit border-b border-white/20"
-        placeholder="Search"
-        inputValue={inputValue}
-        handleChange={handleChange}
-      />
-
       <div className="relative">
-        <Dropdown className="block xs:hidden ml-auto w-16 static">
+        <Dropdown
+          className="static ml-auto block w-16 xs:hidden"
+          isOpen={open}
+          onClick={handleClick}
+        >
           {({ open }): JSX.Element => (
             <>
               <DropdownButton
                 className={cn(
-                  `bg-dark-border/80 rounded-full px-5 py-1 hover:bg-dark-border/90
-                  [&_span]:text-sm [&>span]:font-semibold active:bg-dark-border w-16 ml-auto`,
-                  buttonClassName
+                  `ml-auto w-16 rounded-full bg-dark-border/80 px-5 py-1 hover:bg-dark-border/90
+                  active:bg-dark-border [&>span]:font-semibold [&_span]:text-sm`,
+                  buttonClassName,
                 )}
               >
                 <span>{label}</span>
@@ -59,13 +59,21 @@ export function MobileMultiselectDropdown({
 
               <DropdownItems
                 className={cn(
-                  `border-t border-b flex-col items-center border-white/50 overflow-y-auto
-                bg-black min-w-full max-h-[21rem] outline-glow rounded-none translate-x-0 left-0`,
+                  `outline-glow left-0 max-h-[21rem] min-w-full translate-x-0 flex-col items-center
+                  overflow-y-auto rounded-none border-b border-t border-white/50 bg-black`,
                   className,
-                  !open && "hidden"
+                  !open && "hidden",
                 )}
                 closeOnItemClick={false}
               >
+                <InputField
+                  className="flex xs:hidden"
+                  inputClassName="bg-inherit border-b border-white/20"
+                  placeholder="Search"
+                  inputValue={inputValue}
+                  handleChange={handleChange}
+                />
+
                 {items.map((label, index) => {
                   const isSelected = selectedOptions.includes(label) && "block";
 
@@ -73,8 +81,9 @@ export function MobileMultiselectDropdown({
                     <DropdownItem
                       key={index}
                       className={cn(
-                        `flex flex-row items-center w-full px-3 py-2 border-b last:border-b-0 border-white/20 group`,
-                        itemClassName
+                        `group flex w-full flex-row items-center border-b border-white/20 px-3 py-2
+                        last:border-b-0`,
+                        itemClassName,
                       )}
                       onClick={(e) => {
                         e.stopPropagation();
@@ -84,9 +93,10 @@ export function MobileMultiselectDropdown({
                     >
                       <span
                         className={cn(
-                          "transition duration-300 group-hover:translate-x-2 opacity-50 group-hover:opacity-80",
+                          `opacity-50 transition duration-300 group-hover:translate-x-2
+                          group-hover:opacity-80`,
                           isSelected &&
-                            "opacity-100 group-hover:opacity-100 group-hover:text-red-500"
+                            "opacity-100 group-hover:text-red-500 group-hover:opacity-100",
                         )}
                       >
                         {label}
@@ -95,8 +105,8 @@ export function MobileMultiselectDropdown({
                       {/* TODO: Prop for selected indicator? */}
                       <span
                         className={cn(
-                          "ml-auto transition duration-300 hidden",
-                          isSelected && "block group-hover:text-red-500"
+                          "ml-auto hidden transition duration-300",
+                          isSelected && "block group-hover:text-red-500",
                         )}
                       >
                         *

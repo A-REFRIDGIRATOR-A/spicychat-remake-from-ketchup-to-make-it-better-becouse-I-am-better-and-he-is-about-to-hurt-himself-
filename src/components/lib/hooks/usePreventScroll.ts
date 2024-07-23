@@ -59,7 +59,7 @@ const visualViewport = typeof document !== "undefined" && window.visualViewport;
 export function isScrollable(node: Element): boolean {
   let style = window.getComputedStyle(node);
   return /(auto|scroll)/.test(
-    style.overflow + style.overflowX + style.overflowY
+    style.overflow + style.overflowX + style.overflowY,
   );
 }
 
@@ -130,9 +130,9 @@ function preventScrollStandard() {
     setStyle(
       document.documentElement,
       "paddingRight",
-      `${window.innerWidth - document.documentElement.clientWidth}px`
+      `${window.innerWidth - document.documentElement.clientWidth}px`,
     ),
-    setStyle(document.documentElement, "overflow", "hidden")
+    setStyle(document.documentElement, "overflow", "hidden"),
   );
 }
 
@@ -252,7 +252,7 @@ function preventScrollMobileSafari() {
             visualViewport.addEventListener(
               "resize",
               () => scrollIntoView(target),
-              { once: true }
+              { once: true },
             );
           }
         }
@@ -276,8 +276,8 @@ function preventScrollMobileSafari() {
     setStyle(
       document.documentElement,
       "paddingRight",
-      `${window.innerWidth - document.documentElement.clientWidth}px`
-    )
+      `${window.innerWidth - document.documentElement.clientWidth}px`,
+    ),
     // setStyle(document.documentElement, 'overflow', 'hidden'),
     // setStyle(document.body, 'marginTop', `-${scrollY}px`),
   );
@@ -294,12 +294,12 @@ function preventScrollMobileSafari() {
       passive: false,
       capture: true,
     }),
-    addEvent(document, "touchend", onTouchEnd, {
-      passive: false,
-      capture: true,
-    }),
-    addEvent(document, "focus", onFocus, true),
-    addEvent(window, "scroll", onWindowScroll)
+    // addEvent(document, "touchend", onTouchEnd, {
+    //   passive: false,
+    //   capture: true,
+    // }),
+    // addEvent(document, "focus", onFocus, true),
+    // addEvent(window, "scroll", onWindowScroll),
   );
 
   return () => {
@@ -328,7 +328,7 @@ function addEvent<K extends keyof GlobalEventHandlersEventMap>(
   target: EventTarget,
   event: K,
   handler: (this: Document, ev: GlobalEventHandlersEventMap[K]) => any,
-  options?: boolean | AddEventListenerOptions
+  options?: boolean | AddEventListenerOptions,
 ) {
   // @ts-ignore
   target.addEventListener(event, handler, options);

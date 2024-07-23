@@ -2,7 +2,7 @@
 
 import type { Bot } from "@/components/lib/types/bot";
 
-export async function getBots(): Promise<{ data: Bot[] }> {
+export async function getBots(limit: number = 48): Promise<{ data: Bot[] }> {
   const body = `{
     "searches": [
       {
@@ -15,7 +15,7 @@ export async function getBots(): Promise<{ data: Bot[] }> {
           "filter_by": "application_ids:spicychat && tags:!Step-Family && is_nsfw:false",
           "max_facet_values": 100,
           "page": 1,
-          "per_page": 48
+          "per_page": ${limit}
       }
     ]
   }`;
@@ -43,7 +43,7 @@ export async function getBots(): Promise<{ data: Bot[] }> {
     const data = (await r.json()).results[0].hits;
 
     const transformedData: Bot[] = data.map(
-      (hit: { document: Bot }) => hit.document
+      (hit: { document: Bot }) => hit.document,
     );
 
     return {

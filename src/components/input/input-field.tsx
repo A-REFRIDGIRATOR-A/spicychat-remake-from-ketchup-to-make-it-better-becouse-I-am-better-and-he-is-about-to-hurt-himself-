@@ -13,7 +13,7 @@ type InputFieldProps = {
   className?: string;
   inputClassName?: string;
   handleChange: (
-    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => void;
   handleKeyboardShortcut?: ({
     key,
@@ -42,20 +42,20 @@ export function InputField({
   const isInputLimit = inputLimit && inputLength === inputLimit;
 
   return (
-    <div className={cn("relative inline-flex flex-col w-full", className)}>
+    <div className={cn("relative inline-flex w-full flex-col", className)}>
       <label className="text-sm">{label}</label>
       <div
         className={cn(
-          "inline-flex flex-col rounded overflow-hidden transition-all duration-500",
-          errorMessage && "ring-1 focus-within:ring-2 ring-red-500 w-full"
+          "inline-flex flex-col overflow-hidden rounded transition-all duration-500",
+          errorMessage && "w-full ring-1 ring-red-500 focus-within:ring-2",
         )}
       >
         {useTextArea ? (
           <textarea
             id={inputId}
             className={cn(
-              "w-full h-40 p-2 bg-white/20 rounded-md",
-              inputClassName
+              "h-40 w-full rounded-md bg-white/20 p-2",
+              inputClassName,
             )}
             placeholder={placeholder ?? label}
             value={slicedInputValue}
@@ -67,8 +67,8 @@ export function InputField({
           <input
             id={inputId}
             className={cn(
-              "w-full p-2 bg-white/20 rounded-md outline-none",
-              inputClassName
+              "w-full rounded-md bg-white/20 p-2 outline-none",
+              inputClassName,
             )}
             placeholder={placeholder ?? label}
             value={slicedInputValue}
@@ -77,17 +77,20 @@ export function InputField({
           />
         )}
       </div>
-      <div className="flex flex-row overflow-hidden mt-1 text-ellipsis absolutee left-0 right-0 -bottom-5">
+      <div
+        className="absolutee -bottom-5 left-0 right-0 mt-1 flex flex-row overflow-hidden
+          text-ellipsis"
+      >
         {errorMessage && (
-          <p className="transition-all duration-500 text-sm text-red-500 w-[90%] overflow-hidden">
+          <p className="w-[90%] overflow-hidden text-sm text-red-500 transition-all duration-500">
             <span>{errorMessage}</span>
           </p>
         )}
         {showInputLimit && inputLimit && (
           <span
             className={cn(
-              "transition-all duration-500 text-right text-xs ml-auto",
-              isInputLimit && "text-red-500"
+              "ml-auto text-right text-xs transition-all duration-500",
+              isInputLimit && "text-red-500",
             )}
           >
             {inputLength}/{inputLimit}

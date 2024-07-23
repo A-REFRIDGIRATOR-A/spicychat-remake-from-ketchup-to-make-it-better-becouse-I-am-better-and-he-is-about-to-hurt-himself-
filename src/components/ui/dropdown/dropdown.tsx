@@ -10,7 +10,8 @@ import {
 import type { MouseEvent, ReactNode } from "react";
 
 type DropdownProps = Omit<ComponentPropsWithoutRef<"div">, "children"> & {
-  isOpen?: boolean; // Used to override open
+  /** Used to override open */
+  isOpen?: boolean;
   children?: (props: { open: boolean }) => ReactNode;
 };
 
@@ -34,7 +35,7 @@ const Dropdown = forwardRef<HTMLDivElement, DropdownProps>(
         {children?.({ open })}
       </div>
     );
-  }
+  },
 );
 
 Dropdown.displayName = "Dropdown";
@@ -46,15 +47,15 @@ const DropdownButton = forwardRef<HTMLDivElement, DropdownButtonProps>(
     <div
       ref={ref}
       className={cn(
-        "hover:cursor-pointer flex items-center justify-center",
-        className
+        "flex items-center justify-center hover:cursor-pointer",
+        className,
       )}
       onClick={() => {}}
       {...props}
     >
       {children}
     </div>
-  )
+  ),
 );
 
 DropdownButton.displayName = "DropdownButton";
@@ -66,7 +67,7 @@ type DropdownItemsProps = ComponentPropsWithoutRef<"div"> & {
 const DropdownItems = forwardRef<HTMLDivElement, DropdownItemsProps>(
   ({ closeOnItemClick = true, className, children, ...props }, ref) => {
     const handleClick = (
-      e: MouseEvent<HTMLDivElement, globalThis.MouseEvent>
+      e: MouseEvent<HTMLDivElement, globalThis.MouseEvent>,
     ) => {
       if (closeOnItemClick) return;
 
@@ -77,15 +78,15 @@ const DropdownItems = forwardRef<HTMLDivElement, DropdownItemsProps>(
       <div
         ref={ref}
         className={cn(
-          "absolute top-0 left-1/2 -translate-x-1/2 translate-y-10",
-          className
+          "absolute left-1/2 top-0 -translate-x-1/2 translate-y-10",
+          className,
         )}
         {...props}
       >
         <div onClick={(e) => handleClick(e)}>{children}</div>
       </div>
     );
-  }
+  },
 );
 
 DropdownItems.displayName = "DropdownItems";
@@ -110,7 +111,7 @@ const DropdownItem = forwardRef<HTMLButtonElement, DropdownItemProps>(
     >
       {children}
     </button>
-  )
+  ),
 );
 
 DropdownItem.displayName = "DropdownItem";

@@ -12,7 +12,7 @@ import {
 } from "./dropdown";
 import { InputField } from "@/components/input/input-field";
 import { useFilteredOptions } from "@/components/lib/hooks/useFilteredOptions";
-import { MobileMultiselectDropdown } from "./mobile-multiselect-dropdown";
+//import { MobileMultiselectDropdown } from "./mobile-multiselect-dropdown";
 import type { ChangeEvent } from "react";
 
 type MultiselectDropdownProps = {
@@ -38,12 +38,8 @@ export function MultiselectDropdown({
   const [open, setOpen] = useState(false);
 
   const [inputValue, setInputValue] = useState("");
-
-  const [selectedOptions, setSelectedOptions] = useState<string[]>([]);
-  const [deselectedOptions, setDeselectedOptions] = useState<string[]>(items);
-
-  const mergedOptions: string[] = [...selectedOptions, ...deselectedOptions];
-  const searchOptions = useFilteredOptions(inputValue, mergedOptions);
+  const { searchOptions, selectedOptions, handleItemClick } =
+    useFilteredOptions({ inputValue, defaultItems: items });
 
   useEffect(() => {
     if (isClickedOutside && !buttonIsHovered) setOpen(false);
@@ -55,40 +51,14 @@ export function MultiselectDropdown({
     setOpen(!open);
   };
 
-  const handleItemClick = (label?: string): void => {
-    if (!label) return;
-
-    const removeOption = (option: string, arr: string[]) => {
-      const labelIndex = arr.indexOf(option);
-
-      if (labelIndex === -1) return;
-
-      arr.splice(labelIndex, 1);
-    };
-
-    const hasLabel = selectedOptions.includes(label);
-
-    if (!hasLabel) {
-      setSelectedOptions([...selectedOptions, label]);
-
-      removeOption(label, deselectedOptions);
-      setDeselectedOptions(deselectedOptions);
-      return;
-    }
-
-    removeOption(label, selectedOptions);
-
-    setSelectedOptions(selectedOptions);
-    setDeselectedOptions([label, ...deselectedOptions]);
-  };
-
   const handleChange = (
-    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => setInputValue(e.target.value);
 
   return (
     <>
-      <MobileMultiselectDropdown
+      {/* <MobileMultiselectDropdown
+        open={open}
         className={className}
         itemClassName={itemClassName}
         buttonClassName={buttonClassName}
@@ -96,9 +66,10 @@ export function MultiselectDropdown({
         items={searchOptions}
         selectedOptions={selectedOptions}
         inputValue={inputValue}
+        handleClick={handleClick}
         handleChange={handleChange}
         handleItemClick={handleItemClick}
-      />
+      /> */}
 
       <Dropdown className="hidden xs:block" isOpen={open} onClick={handleClick}>
         {({ open }): JSX.Element => (
@@ -106,9 +77,9 @@ export function MultiselectDropdown({
             <DropdownButton
               ref={buttonRef}
               className={cn(
-                `bg-dark-border/80 rounded-full px-5 py-1 hover:bg-dark-border/90
-                [&_span]:text-sm [&>span]:font-semibold active:bg-dark-border`,
-                buttonClassName
+                `rounded-full bg-dark-border/80 px-5 py-1 hover:bg-dark-border/90
+                active:bg-dark-border [&>span]:font-semibold [&_span]:text-sm`,
+                buttonClassName,
               )}
             >
               <span>{label}</span>
@@ -117,10 +88,10 @@ export function MultiselectDropdown({
             <DropdownItems
               ref={ref}
               className={cn(
-                `border flex-col items-center border-white/50 overflow-y-auto
-              bg-black min-w-[10rem] max-h-[21rem] outline-glow rounded-lg`,
+                `outline-glow max-h-[21rem] min-w-[10rem] flex-col items-center overflow-y-auto
+                rounded-lg border border-white/50 bg-black`,
                 className,
-                !open && "hidden"
+                !open && "hidden",
               )}
               closeOnItemClick={false}
             >
@@ -133,14 +104,15 @@ export function MultiselectDropdown({
               />
 
               {searchOptions.map((label, index) => {
-                const isSelected = selectedOptions.includes(label) && "block";
+                const isSelected = selectedOptions.includes(label);
 
                 return (
                   <DropdownItem
                     key={index}
                     className={cn(
-                      `flex flex-row items-center w-full px-3 py-2 border-b last:border-b-0 border-white/20 group`,
-                      itemClassName
+                      `group flex w-full flex-row items-center border-b border-white/20 px-3 py-2
+                      last:border-b-0`,
+                      itemClassName,
                     )}
                     onClick={(e) => {
                       e.stopPropagation();
@@ -150,9 +122,10 @@ export function MultiselectDropdown({
                   >
                     <span
                       className={cn(
-                        "transition duration-300 group-hover:translate-x-2 opacity-50 group-hover:opacity-80",
+                        `opacity-50 transition duration-300 group-hover:translate-x-2
+                        group-hover:opacity-80`,
                         isSelected &&
-                          "opacity-100 group-hover:opacity-100 group-hover:text-red-500"
+                          "opacity-100 group-hover:text-red-500 group-hover:opacity-100",
                       )}
                     >
                       {label}
@@ -161,8 +134,8 @@ export function MultiselectDropdown({
                     {/* TODO: Prop for selected indicator? */}
                     <span
                       className={cn(
-                        "ml-auto transition duration-300 hidden",
-                        isSelected && "block group-hover:text-red-500"
+                        "ml-auto hidden transition duration-300",
+                        isSelected && "block group-hover:text-red-500",
                       )}
                     >
                       *

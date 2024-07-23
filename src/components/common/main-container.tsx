@@ -13,8 +13,8 @@ export function MainContainer({
   return (
     <div
       className={cn(
-        "flex min-h-screen w-full flex-col max-w-[96rem]",
-        className
+        "flex min-h-screen w-full max-w-[96rem] flex-col",
+        className,
       )}
     >
       {children}

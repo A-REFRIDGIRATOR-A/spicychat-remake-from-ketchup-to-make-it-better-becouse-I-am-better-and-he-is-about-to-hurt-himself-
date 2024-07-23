@@ -38,11 +38,12 @@ export default async function Home() {
           <FilterOptions />
         </Suspense>
 
-        <BotsContainer className="mt-10">
+        <BotsContainer className="mt-5 xs:mt-10">
           <DummyBots />
         </BotsContainer>
+
+        <Footer />
       </MainContainer>
-      <Footer />
     </MainLayout>
   );
 }

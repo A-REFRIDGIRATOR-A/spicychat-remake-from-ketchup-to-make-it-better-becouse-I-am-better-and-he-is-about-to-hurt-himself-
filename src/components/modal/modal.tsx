@@ -84,7 +84,7 @@ const Modal = forwardRef<HTMLDivElement, ModalProps>(
           <div
             ref={ref}
             className={cn(
-              "z-[70] h-96 w-96 overflow-hidden rounded-lg bg-black",
+              "relative z-[70] h-96 w-96 overflow-hidden rounded-lg bg-black",
               defaultAnimation &&
                 "data-[open=true]:modal-open data-[open=false]:modal-exit",
               className,

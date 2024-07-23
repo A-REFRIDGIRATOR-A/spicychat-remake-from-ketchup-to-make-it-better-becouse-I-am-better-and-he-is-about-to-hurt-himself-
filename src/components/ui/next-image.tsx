@@ -51,7 +51,6 @@ export function NextImage({
         height={height}
         onLoad={handleLoad}
         layout="responsive"
-        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
         {...rest}
       />
     </figure>

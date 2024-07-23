@@ -2,7 +2,7 @@ import type { SyntheticEvent } from "react";
 
 export function preventBubbling(
   callback?: ((...args: never[]) => unknown) | null,
-  noPreventDefault?: boolean
+  noPreventDefault?: boolean,
 ) {
   return (e: SyntheticEvent): void => {
     e.stopPropagation();
@@ -26,7 +26,7 @@ export function isPlural(count: number): string {
 
 export function formatNumber(
   num: number,
-  option?: "shorten" | "commas"
+  option?: "shorten" | "commas",
 ): string {
   if (option === "shorten") {
     return shortenNumber(num);
@@ -52,4 +52,10 @@ function shortenNumber(num: number): string {
 
 function numCommas(num: number): string {
   return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+
+export function calculateScore(score: number) {
+  const percentage = Math.round(score * 100);
+
+  return `${percentage}%`;
 }

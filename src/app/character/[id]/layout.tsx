@@ -1,9 +1,20 @@
+import { getBot } from "@/actions/get-bot";
 import type { Metadata } from "next";
 
-export const metadata: Metadata = {
-  title: "Chat with a character | Spicychat (Unofficial Fan Remake)",
-  description: "Chatbot With AI Characters | Spicychat (Unofficial Fan Remake)",
+type Props = {
+  params: { id: string };
 };
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const id = params.id;
+
+  const { data } = await getBot(id as string);
+
+  return {
+    title: `${data?.name ?? "Character"} | Spicychat (Unofficial Fan Remake)`,
+    description: `${data?.name ?? "Character"} | Spicychat (Unofficial Fan Remake)`,
+  };
+}
 
 export default function CharacterPageLayout({
   children,
