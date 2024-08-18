@@ -32,14 +32,15 @@ export function MobileSidebarModal({
   closeModal,
 }: MobileSidebarModalProps): JSX.Element {
   return (
-    <section className="relative flex flex-col gap-3 px-4 mt-5 h-[calc(100%_-_2.1rem)]">
-      <div className="relative h-52 w-full mb-5">
+    <section className="relative mt-5 flex h-[calc(100%_-_2.1rem)] flex-col gap-3 px-4">
+      <div className="relative mb-5 h-52 w-full">
         <NextImage
           imgClassName="z-50 rounded-lg"
           src="/assets/hq.jpg"
           alt="avatar"
           layout="fill"
           useSkeleton
+          sizes="(max-width: 728px) 30vw"
         />
 
         <NextImage
@@ -49,6 +50,7 @@ export function MobileSidebarModal({
           layout="fill"
           quality={50}
           useSkeleton
+          sizes="(max-width: 728px) 30vw"
         />
       </div>
 
@@ -56,8 +58,8 @@ export function MobileSidebarModal({
         <Link
           key={name}
           className={cn(
-            "flex flex-row gap-5 items-center font-semibold outline-none text-xl",
-            name === "Help" && "mt-auto"
+            "flex flex-row items-center gap-5 text-xl font-semibold outline-none",
+            name === "Help" && "mt-auto",
           )}
           href={link}
           onClick={closeModal}
@@ -67,12 +69,15 @@ export function MobileSidebarModal({
         </Link>
       ))}
 
-      <div className="absolute bottom-0 -right-16 flex flex-col bg-black/10 p-2 items-center gap-3 rounded-lg backdrop-blur-sm">
-        <CustomIcon className="w-9 h-9" iconName="DiscordIcon" />
+      <div
+        className="absolute -right-16 bottom-0 flex flex-col items-center gap-3 rounded-lg
+          bg-black/10 p-2 backdrop-blur-sm"
+      >
+        <CustomIcon className="h-9 w-9" iconName="DiscordIcon" />
 
-        <CustomIcon className="w-9 h-9" iconName="TwitterIcon" />
+        <CustomIcon className="h-9 w-9" iconName="TwitterIcon" />
 
-        <CustomIcon className="w-9 h-9" iconName="RedditIcon" />
+        <CustomIcon className="h-9 w-9" iconName="RedditIcon" />
       </div>
     </section>
   );

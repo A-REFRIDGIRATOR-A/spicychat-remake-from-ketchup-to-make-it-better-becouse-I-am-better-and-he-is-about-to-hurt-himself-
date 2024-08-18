@@ -52,7 +52,7 @@ export function DefinitionModal({
 
         <FavoriteBotButton
           buttonClassName="z-30 top-1 left-1"
-          className="w-6 h-6"
+          className="h-6 w-6"
         />
 
         <button
@@ -80,8 +80,8 @@ export function DefinitionModal({
 
         <div className="mt-auto flex w-full flex-row items-center gap-3">
           <Link
-            className="rounded-full bg-white/50 p-1 mb-1"
-            href={`/character/${bot.id}`}
+            className="mb-1 rounded-full bg-white/50 p-1"
+            href={`/chatbot/${bot.id}`}
           >
             <CustomIcon
               className="h-6 w-6 text-black"

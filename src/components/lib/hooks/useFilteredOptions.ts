@@ -64,15 +64,17 @@ export function useFilteredOptions(options?: UseFilteredOptionsOptions) {
 
     if (isExcluded) {
       removeOption(label, excludeOptions);
-      // setExcludeOptions([...excludeOptions]);
-      // setDeselectedOptions([label, ...deselectedOptions]);
+      setExcludeOptions([...excludeOptions]);
 
       return;
     }
 
     setExcludeOptions([label, ...excludeOptions]);
-    // removeOption(label, deselectedOptions);
-    // setDeselectedOptions([...deselectedOptions]);
+
+    removeOption(label, selectedOptions);
+    removeOption(label, deselectedOptions);
+    setSelectedOptions([...selectedOptions]);
+    setDeselectedOptions([label, ...deselectedOptions]);
   };
 
   return {

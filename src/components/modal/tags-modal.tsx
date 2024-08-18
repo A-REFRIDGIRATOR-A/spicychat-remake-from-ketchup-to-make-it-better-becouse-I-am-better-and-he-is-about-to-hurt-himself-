@@ -100,7 +100,10 @@ export function TagsModal({
             </button>
 
             <button
-              className={cn("bg-white/50 p-1", exclude && "text-accent-red")}
+              className={cn(
+                "rounded-md bg-white/50 p-1 px-3",
+                exclude && "text-accent-red",
+              )}
               onClick={() => setExclude(!exclude)}
             >
               exclude
@@ -138,30 +141,28 @@ export function TagsModal({
                 })}
 
               {exclude &&
-                [...selectedOptions, ...deselectedOptions].map(
-                  (option, index) => {
-                    const isSelected = excludeOptions.includes(option);
+                mergedExcludeOptions.map((option, index) => {
+                  const isSelected = excludeOptions.includes(option);
 
-                    return (
-                      <button
-                        key={index}
-                        className={cn(
-                          "flex w-full flex-row gap-3 text-white/50",
-                          isSelected && "font-semibold text-white",
-                        )}
-                        onClick={() => handleClick(option)}
-                      >
-                        {option}{" "}
-                        {isSelected && (
-                          <CustomIcon
-                            className="h-4 w-4"
-                            iconName="CheckMarkIcon"
-                          />
-                        )}
-                      </button>
-                    );
-                  },
-                )}
+                  return (
+                    <button
+                      key={index}
+                      className={cn(
+                        "flex w-full flex-row gap-3 text-white/50",
+                        isSelected && "font-semibold text-white",
+                      )}
+                      onClick={() => handleClick(option)}
+                    >
+                      {option}{" "}
+                      {isSelected && (
+                        <CustomIcon
+                          className="h-4 w-4"
+                          iconName="CheckMarkIcon"
+                        />
+                      )}
+                    </button>
+                  );
+                })}
             </div>
           </section>
         )}

@@ -89,7 +89,7 @@ export function Footer(): JSX.Element {
                 iconName={link.iconName}
               />
 
-              {link.linkName}
+              <span className="hidden xs:block">{link.linkName}</span>
             </Link>
           ))}
         </div>

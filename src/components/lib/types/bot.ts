@@ -10,6 +10,8 @@ export type Bot = {
   rating_score: number;
   tags: string[];
   title: string;
+  greeting: string;
+  persona: string;
   token_count: number;
   updatedAt: number;
   createdAt: number;

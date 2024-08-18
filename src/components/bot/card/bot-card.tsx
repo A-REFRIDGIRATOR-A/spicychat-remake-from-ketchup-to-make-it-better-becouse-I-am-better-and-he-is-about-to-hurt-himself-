@@ -1,9 +1,6 @@
 import { CustomIcon } from "../../ui/custom-icon";
-import { Avatar } from "../../ui/avatar";
-import { UserTooltip } from "../../ui/user-tooltip";
 import { BotCardContent } from "./bot-card-content";
 import { formatNumber } from "@/components/lib/utils";
-import type { User } from "../../lib/types/user";
 import type { Bot } from "@/components/lib/types/bot";
 
 type BotCardProps = {
@@ -12,18 +9,12 @@ type BotCardProps = {
 };
 
 export function BotCard({ bot, recommended }: BotCardProps): JSX.Element {
-  const dummyUser: User = {
-    name: "User123",
-    username: "user123",
-    botCount: 16,
-  };
-
   return (
     <div
       className="group z-0 flex w-44 cursor-pointer flex-col gap-3 bg-black transition-all
         duration-300 xs:w-52 xs:hover:z-10 xs:hover:scale-105"
     >
-      <BotCardContent bot={bot} user={dummyUser} recommended={recommended} />
+      <BotCardContent bot={bot} recommended={recommended} />
 
       <div className="flex w-full flex-col items-center gap-3">
         <div className="flex w-full flex-row items-center gap-3">

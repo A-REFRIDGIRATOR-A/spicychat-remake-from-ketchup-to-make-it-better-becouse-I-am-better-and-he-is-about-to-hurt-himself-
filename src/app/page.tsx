@@ -9,9 +9,10 @@ import { BotsContainer } from "../components/home/bots-container";
 import { BotCard } from "../components/bot/card/bot-card";
 import { FilterOptionsFallback } from "@/components/fallbacks/filter-options-fallback";
 import { getBots } from "@/actions/get-bots";
+import { ShowcaseBotsFallback } from "@/components/fallbacks/showcase-bots-fallback";
 
 async function ShowcaseBots() {
-  const data = await getBots();
+  const data = await getBots(49);
 
   function DummyBots(): JSX.Element {
     return (
@@ -31,10 +32,6 @@ async function ShowcaseBots() {
 }
 
 export default function Home() {
-  // if (typeof window === "undefined") {
-  //   console.log("we are a sever component");
-  // } else console.log("we are a client component");
-
   return (
     <MainLayout className="flex flex-col items-center">
       <MainContainer>
@@ -46,7 +43,7 @@ export default function Home() {
           <FilterOptions />
         </Suspense>
 
-        <Suspense fallback={<div>Loading...</div>}>
+        <Suspense fallback={<ShowcaseBotsFallback />}>
           <ShowcaseBots />
         </Suspense>
 

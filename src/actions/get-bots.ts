@@ -1,6 +1,7 @@
 "use server";
 
 import type { Bot } from "@/components/lib/types/bot";
+import { revalidatePath } from "next/cache";
 
 export async function getBots(limit: number = 48): Promise<{ data: Bot[] }> {
   const body = `{
@@ -46,6 +47,8 @@ export async function getBots(limit: number = 48): Promise<{ data: Bot[] }> {
       (hit: { document: Bot }) => hit.document,
     );
 
+    revalidatePath("/");
+
     return {
       data: transformedData,
     };
@@ -58,6 +61,8 @@ export async function getBots(limit: number = 48): Promise<{ data: Bot[] }> {
           name: "Harley Quinn",
           title: `Harley Quinn (Harleen Frances Quinzel) is a character appearing in
                     American comic books published by DC Comics.`,
+          greeting: "",
+          persona: "",
           tags: ["Female", "SFW"],
           definition_visible: false,
           is_nsfw: false,

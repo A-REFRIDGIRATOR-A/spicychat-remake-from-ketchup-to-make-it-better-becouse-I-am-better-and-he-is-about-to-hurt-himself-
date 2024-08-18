@@ -3,25 +3,21 @@ import { cn } from "@/components/lib/cn";
 import { Badge } from "@/components/ui/badge";
 import { NextImage } from "@/components/ui/next-image";
 import { FavoriteBotButton } from "./favorite-bot-button";
-//import { BotTooltip } from "./bot-tooltip";
 import { DefinitionButton } from "./definition-button";
-import type { User } from "@/components/lib/types/user";
 import type { Bot } from "@/components/lib/types/bot";
 
 type BotCardContentProps = {
   recommended?: boolean;
   bot: Bot;
-  user: User | null;
 };
 
 export function BotCardContent({
   recommended,
   bot,
-  user,
 }: BotCardContentProps): JSX.Element {
   return (
     <div className="group/img relative">
-      <Link href={`/character/${bot.id}`}>
+      <Link href={`/chatbot/${bot.id}`}>
         {recommended && (
           <Badge
             className="absolute -top-3 left-9 right-9 z-10 text-xs font-bold shadow-lg shadow-black/40
@@ -30,6 +26,7 @@ export function BotCardContent({
             Recommended
           </Badge>
         )}
+
         <div className="relative h-40 overflow-hidden rounded-md duration-1000 xs:h-52">
           <FavoriteBotButton
             buttonClassName="z-10 top-1 left-1"
@@ -59,8 +56,6 @@ export function BotCardContent({
           </div>
         </div>
       </Link>
-
-      {/* <BotTooltip bot={bot} user={user} /> */}
     </div>
   );
 }

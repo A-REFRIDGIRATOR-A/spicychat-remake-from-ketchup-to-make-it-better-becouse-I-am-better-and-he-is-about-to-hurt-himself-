@@ -28,6 +28,8 @@ export function formatNumber(
   num: number,
   option?: "shorten" | "commas",
 ): string {
+  if (isNaN(num)) return "";
+
   if (option === "shorten") {
     return shortenNumber(num);
   } else if (option === "commas") {
@@ -38,6 +40,8 @@ export function formatNumber(
 }
 
 function shortenNumber(num: number): string {
+  if (isNaN(num)) return "";
+
   const units = ["", "K", "M", "B", "T"];
   let unitIndex = 0;
   let shortNum = num;
@@ -51,11 +55,35 @@ function shortenNumber(num: number): string {
 }
 
 function numCommas(num: number): string {
+  if (isNaN(num)) return "";
+
   return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
 
 export function calculateScore(score: number) {
+  if (isNaN(score)) return "0%";
+
   const percentage = Math.round(score * 100);
 
   return `${percentage}%`;
+}
+
+export function formatMarkdown(content: string): string {
+  if (!content) return "";
+
+  // TODO: Sanitize
+
+  return (
+    content
+      // Bold text
+      .replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>")
+      // Italic text
+      .replace(/\*([^*]+)\*/g, "<em>$1</em>")
+      // Underlined text
+      .replace(/--([^--]+)--/g, "<u>$1</u>")
+      // Quotes
+      .replace(/"([^"]+)"/g, "<q>$1</q>")
+      // Preserve new lines
+      .replace(/\n/g, "<br>")
+  );
 }

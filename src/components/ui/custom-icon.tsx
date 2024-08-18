@@ -88,16 +88,16 @@ function SearchIcon({ className }: IconProps): JSX.Element {
         d="M19 10.5A8.5 8.5 0 1 1 10.5 2a8.5 8.5 0 0 1 8.5 8.5Z"
         fill="none"
         stroke="currentColor"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        stroke-width="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="2"
       ></path>
       <line
         fill="none"
         stroke="currentColor"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        stroke-width="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="2"
         x1="16.511"
         x2="22"
         y1="16.511"
@@ -123,9 +123,9 @@ function ExploreIcon({ className }: IconProps): JSX.Element {
         fill="none"
         points="13.941 13.953 7.581 16.424 10.06 10.056 16.42 7.585 13.941 13.953"
         stroke="currentColor"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        stroke-width="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="2"
       ></polygon>
       <polygon
         fill-rule="evenodd"
@@ -137,9 +137,9 @@ function ExploreIcon({ className }: IconProps): JSX.Element {
         fill="none"
         r="10.5"
         stroke="currentColor"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        stroke-width="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="2"
       ></circle>
     </svg>
   );
@@ -162,7 +162,7 @@ function MessagesIcon({ className }: IconProps): JSX.Element {
         fill="none"
         stroke="currentColor"
         stroke-miterlimit="10"
-        stroke-width="1.739"
+        strokeWidth="1.739"
       ></path>
       <path
         d="M17.79 10.132a.659.659 0 0 0-.962-.873l-2.556 2.05a.63.63 0 0 1-.758.002L11.06 9.47a1.576 1.576 0 0 0-2.277.42l-2.567 3.98a.659.659 0 0 0 .961.875l2.556-2.049a.63.63 0 0 1 .759-.002l2.452 1.84a1.576 1.576 0 0 0 2.278-.42Z"
@@ -190,8 +190,8 @@ function MessageIcon({ className }: IconProps): JSX.Element {
         d="M20.656 17.008a9.993 9.993 0 1 0-3.59 3.615L22 22Z"
         fill="none"
         stroke="currentColor"
-        stroke-linejoin="round"
-        stroke-width="2"
+        strokeLinejoin="round"
+        strokeWidth="2"
       ></path>
     </svg>
   );
@@ -254,16 +254,16 @@ function CreateIcon({ className }: IconProps): JSX.Element {
         d="M2 12v3.45c0 2.849.698 4.005 1.606 4.944.94.909 2.098 1.608 4.946 1.608h6.896c2.848 0 4.006-.7 4.946-1.608C21.302 19.455 22 18.3 22 15.45V8.552c0-2.849-.698-4.006-1.606-4.945C19.454 2.7 18.296 2 15.448 2H8.552c-2.848 0-4.006.699-4.946 1.607C2.698 4.547 2 5.703 2 8.552Z"
         fill="none"
         stroke="currentColor"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        stroke-width="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="2"
       ></path>
       <line
         fill="none"
         stroke="currentColor"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        stroke-width="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="2"
         x1="6.545"
         x2="17.455"
         y1="12.001"
@@ -272,9 +272,9 @@ function CreateIcon({ className }: IconProps): JSX.Element {
       <line
         fill="none"
         stroke="currentColor"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        stroke-width="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="2"
         x1="12.003"
         x2="12.003"
         y1="6.545"
@@ -300,8 +300,8 @@ function SendToIcon({ className }: IconProps): JSX.Element {
       <line
         fill="none"
         stroke="currentColor"
-        stroke-linejoin="round"
-        stroke-width="2"
+        strokeLinejoin="round"
+        strokeWidth="2"
         x1="22"
         x2="9.218"
         y1="3"
@@ -311,8 +311,8 @@ function SendToIcon({ className }: IconProps): JSX.Element {
         fill="none"
         points="11.698 20.334 22 3.001 2 3.001 9.218 10.084 11.698 20.334"
         stroke="currentColor"
-        stroke-linejoin="round"
-        stroke-width="2"
+        strokeLinejoin="round"
+        strokeWidth="2"
       ></polygon>
     </svg>
   );
@@ -335,9 +335,9 @@ function SaveIcon({ className }: IconProps): JSX.Element {
         fill="none"
         points="20 21 12 13.44 4 21 4 3 20 3 20 21"
         stroke="currentColor"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        stroke-width="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="2"
       ></polygon>
     </svg>
   );
@@ -409,9 +409,9 @@ function LeftArrowIcon({ className }: IconProps): JSX.Element {
       <line
         fill="none"
         stroke="currentColor"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        stroke-width="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="2"
         x1="2.909"
         x2="22.001"
         y1="12.004"
@@ -421,9 +421,9 @@ function LeftArrowIcon({ className }: IconProps): JSX.Element {
         fill="none"
         points="9.276 4.726 2.001 12.004 9.276 19.274"
         stroke="currentColor"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        stroke-width="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="2"
       ></polyline>
     </svg>
   );
@@ -471,13 +471,13 @@ function ArrowDownIcon({ className }: IconProps): JSX.Element {
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
       viewBox="0 0 24 24"
-      stroke-width="1.5"
+      strokeWidth="1.5"
       stroke="currentColor"
       className="h-6 w-6"
     >
       <path
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeLinecap="round"
+        strokeLinejoin="round"
         d="M19.5 8.25l-7.5 7.5-7.5-7.5"
       />
     </svg>
@@ -537,16 +537,16 @@ function MagnifyingGlass({ className }: IconProps): JSX.Element {
         d="M19 10.5A8.5 8.5 0 1 1 10.5 2a8.5 8.5 0 0 1 8.5 8.5Z"
         fill="none"
         stroke="currentColor"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        stroke-width="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="2"
       ></path>
       <line
         fill="none"
         stroke="currentColor"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        stroke-width="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="2"
         x1="16.511"
         x2="22"
         y1="16.511"
@@ -574,22 +574,22 @@ function UserPlusIcon({ className }: IconProps): JSX.Element {
         fill="none"
         stroke="currentColor"
         stroke-miterlimit="10"
-        stroke-width="2"
+        strokeWidth="2"
       ></path>
       <path
         d="M22 19.5v-.447a4.05 4.05 0 0 0-4.05-4.049h-4.906a4.05 4.05 0 0 0-4.049 4.049v.447"
         fill="none"
         stroke="currentColor"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        stroke-width="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="2"
       ></path>
       <line
         fill="none"
         stroke="currentColor"
-        stroke-linecap="round"
+        strokeLinecap="round"
         stroke-miterlimit="10"
-        stroke-width="2"
+        strokeWidth="2"
         x1="5.001"
         x2="5.001"
         y1="7.998"
@@ -598,9 +598,9 @@ function UserPlusIcon({ className }: IconProps): JSX.Element {
       <line
         fill="none"
         stroke="currentColor"
-        stroke-linecap="round"
+        strokeLinecap="round"
         stroke-miterlimit="10"
-        stroke-width="2"
+        strokeWidth="2"
         x1="8.004"
         x2="2.003"
         y1="11"
@@ -625,9 +625,9 @@ function Settings({ className }: IconProps): JSX.Element {
       <line
         fill="none"
         stroke="currentColor"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        stroke-width="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="2"
         x1="3"
         x2="21"
         y1="4"
@@ -636,9 +636,9 @@ function Settings({ className }: IconProps): JSX.Element {
       <line
         fill="none"
         stroke="currentColor"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        stroke-width="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="2"
         x1="3"
         x2="21"
         y1="12"
@@ -647,9 +647,9 @@ function Settings({ className }: IconProps): JSX.Element {
       <line
         fill="none"
         stroke="currentColor"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        stroke-width="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="2"
         x1="3"
         x2="21"
         y1="20"
@@ -699,16 +699,16 @@ function Options({ className }: IconProps): JSX.Element {
         fill="none"
         r="8.635"
         stroke="currentColor"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        stroke-width="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="2"
       ></circle>
       <path
         d="M14.232 3.656a1.269 1.269 0 0 1-.796-.66L12.93 2h-1.86l-.505.996a1.269 1.269 0 0 1-.796.66m-.001 16.688a1.269 1.269 0 0 1 .796.66l.505.996h1.862l.505-.996a1.269 1.269 0 0 1 .796-.66M3.656 9.768a1.269 1.269 0 0 1-.66.796L2 11.07v1.862l.996.505a1.269 1.269 0 0 1 .66.796m16.688-.001a1.269 1.269 0 0 1 .66-.796L22 12.93v-1.86l-.996-.505a1.269 1.269 0 0 1-.66-.796M7.678 4.522a1.269 1.269 0 0 1-1.03.096l-1.06-.348L4.27 5.587l.348 1.062a1.269 1.269 0 0 1-.096 1.03m11.8 11.799a1.269 1.269 0 0 1 1.03-.096l1.06.348 1.318-1.317-.348-1.062a1.269 1.269 0 0 1 .096-1.03m-14.956.001a1.269 1.269 0 0 1 .096 1.03l-.348 1.06 1.317 1.318 1.062-.348a1.269 1.269 0 0 1 1.03.096m11.799-11.8a1.269 1.269 0 0 1-.096-1.03l.348-1.06-1.317-1.318-1.062.348a1.269 1.269 0 0 1-1.03-.096"
         fill="none"
         stroke="currentColor"
-        stroke-linejoin="round"
-        stroke-width="2"
+        strokeLinejoin="round"
+        strokeWidth="2"
       ></path>
     </svg>
   );
@@ -738,7 +738,7 @@ function SpicyChatLogo({ className }: IconProps): JSX.Element {
       className={className}
       stroke="currentColor"
       fill="currentColor"
-      stroke-width="0"
+      strokeWidth="0"
       role="img"
       viewBox="0 0 24 24"
       height="20"
@@ -757,7 +757,7 @@ function BellIcon({ className }: IconProps): JSX.Element {
       className={className}
       stroke="currentColor"
       fill="currentColor"
-      stroke-width="0"
+      strokeWidth="0"
       viewBox="0 0 24 24"
       height="30"
       width="30"
@@ -775,7 +775,7 @@ function XMarkIcon({ className }: IconProps): JSX.Element {
       className={className}
       stroke="currentColor"
       fill="currentColor"
-      stroke-width="0"
+      strokeWidth="0"
       viewBox="0 0 512 512"
       height="1em"
       width="1em"
@@ -793,7 +793,7 @@ function InformationIcon({ className }: IconProps): JSX.Element {
       className={className}
       stroke="currentColor"
       fill="currentColor"
-      stroke-width="0"
+      strokeWidth="0"
       viewBox="0 0 16 16"
       height="1em"
       width="1em"
@@ -812,7 +812,7 @@ function DiscordIcon({ className }: IconProps): JSX.Element {
       className={className}
       stroke="currentColor"
       fill="currentColor"
-      stroke-width="0"
+      strokeWidth="0"
       viewBox="0 0 16 16"
       height="20px"
       width="20px"
@@ -830,7 +830,7 @@ function TwitterIcon({ className }: IconProps): JSX.Element {
       className={className}
       stroke="currentColor"
       fill="currentColor"
-      stroke-width="0"
+      strokeWidth="0"
       viewBox="0 0 16 16"
       height="20px"
       width="20px"
@@ -848,7 +848,7 @@ function RedditIcon({ className }: IconProps): JSX.Element {
       className={className}
       stroke="currentColor"
       fill="currentColor"
-      stroke-width="0"
+      strokeWidth="0"
       viewBox="0 0 16 16"
       height="20px"
       width="20px"
