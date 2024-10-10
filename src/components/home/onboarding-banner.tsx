@@ -50,12 +50,14 @@ export function OnboardingBanner(): JSX.Element {
           <button
             className="mt-auto rounded-full bg-white px-0 py-1 text-xl font-bold text-black xs:absolute
               xs:right-10 xs:top-[40%] xs:mt-0 xs:border xs:bg-black/5 xs:px-5 xs:text-white"
+            type="button"
           >
             Create Free Account
           </button>
 
           <button
             className="absolute right-2.5 top-2.5 z-[10]"
+            type="button"
             onClick={handleClick}
             aria-label="close-banner"
           >

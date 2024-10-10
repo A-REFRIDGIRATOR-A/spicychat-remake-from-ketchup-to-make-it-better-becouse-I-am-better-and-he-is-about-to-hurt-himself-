@@ -20,7 +20,7 @@ export function DefinitionModal({
 }: DefinitionModalProps): JSX.Element {
   const src =
     bot.avatar_url !== "/assets/harley.png"
-      ? "https://ndsc.b-cdn.net/" + bot.avatar_url
+      ? bot.avatar_url
       : "/assets/harley.png";
 
   return (
@@ -92,8 +92,7 @@ export function DefinitionModal({
           <Link
             className="mb-1 flex h-8 w-full items-center justify-center rounded-md bg-white text-xl
               font-semibold text-black"
-            href={"#"}
-            onClick={preventBubbling()}
+            href={`/fake-chat/${bot.id}`}
           >
             Chat
           </Link>

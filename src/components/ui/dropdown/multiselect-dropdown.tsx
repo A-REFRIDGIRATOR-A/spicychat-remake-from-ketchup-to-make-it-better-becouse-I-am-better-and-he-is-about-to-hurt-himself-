@@ -12,7 +12,6 @@ import {
 } from "./dropdown";
 import { InputField } from "@/components/input/input-field";
 import { useFilteredOptions } from "@/components/lib/hooks/useFilteredOptions";
-//import { MobileMultiselectDropdown } from "./mobile-multiselect-dropdown";
 import type { ChangeEvent } from "react";
 
 type MultiselectDropdownProps = {
@@ -96,6 +95,7 @@ export function MultiselectDropdown({
               closeOnItemClick={false}
             >
               <InputField
+                inputId={`search-dropdown-${label}`}
                 className="flex"
                 inputClassName="bg-inherit border-b border-white/20"
                 placeholder="Search"

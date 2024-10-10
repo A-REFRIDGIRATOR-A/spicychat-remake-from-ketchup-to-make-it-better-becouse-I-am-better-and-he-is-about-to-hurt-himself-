@@ -106,6 +106,7 @@ const DropdownItem = forwardRef<HTMLButtonElement, DropdownItemProps>(
     <button
       ref={ref}
       className={cn("", className)}
+      type="button"
       onClick={() => action?.()}
       {...props}
     >

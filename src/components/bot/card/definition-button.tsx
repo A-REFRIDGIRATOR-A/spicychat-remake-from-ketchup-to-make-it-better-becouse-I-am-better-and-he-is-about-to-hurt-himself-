@@ -55,6 +55,7 @@ export function DefinitionButton({
           className,
           hideButton && "hidden",
         )}
+        type="button"
         onClick={preventBubbling(openModal)}
         disabled={disable}
         aria-label="bot-definition"

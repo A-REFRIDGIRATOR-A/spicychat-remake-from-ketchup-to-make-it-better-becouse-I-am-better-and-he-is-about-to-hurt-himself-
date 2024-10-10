@@ -27,6 +27,8 @@ export async function getBot(id: string): Promise<{ data: Bot | null }> {
 
     const data = (await req.json()) as Bot;
 
+    data.avatar_url = `https://ndsc.b-cdn.net/${data.avatar_url}`;
+
     return {
       data,
     };

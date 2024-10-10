@@ -27,7 +27,7 @@ export async function CharacterLayout({ id }: { id: string }) {
 
   const src =
     avatar_url !== "/assets/harley.png"
-      ? "https://ndsc.b-cdn.net/" + avatar_url
+      ? (avatar_url as string)
       : "/assets/harley.png";
 
   function DefinitionSection({
@@ -146,6 +146,7 @@ export async function CharacterLayout({ id }: { id: string }) {
               alt={botId}
               layout="fill"
               draggable={false}
+              priority
             />
           </div>
 

@@ -1,21 +1,26 @@
 "use client";
 
 import Link from "next/link";
+import dynamic from "next/dynamic";
 import { cn } from "../lib/cn";
 import { CustomIcon } from "../ui/custom-icon";
 import { Avatar } from "../ui/avatar";
 import { InputField } from "../input/input-field";
 import { useState } from "react";
 import { Modal } from "../modal/modal";
-import { MobileSidebarModal } from "../modal/mobile-sidebar-modal";
 import { useModal } from "../lib/hooks/useModal";
 import type { ChangeEvent } from "react";
+
+const MobileSidebarModal = dynamic(() =>
+  import("../modal/mobile-sidebar-modal").then((mod) => mod.MobileSidebarModal),
+); // TODO: Loading Fallback
 
 type HeaderProps = {
   disableSticky?: boolean;
   className?: string;
 };
 
+// TODO: Revamp this
 export function Header({ disableSticky, className }: HeaderProps): JSX.Element {
   const [inputValue, setInputValue] = useState("");
 
@@ -24,7 +29,7 @@ export function Header({ disableSticky, className }: HeaderProps): JSX.Element {
   }: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>): void =>
     setInputValue(value);
 
-  const { open, openModal, closeModal } = useModal();
+  const { safeOpen, open, openModal, closeModal } = useModal({ timer: 50 });
 
   return (
     <>
@@ -57,6 +62,7 @@ export function Header({ disableSticky, className }: HeaderProps): JSX.Element {
 
         <div className="absolute right-20 flex flex-row items-center gap-3">
           <InputField
+            inputId="search-bots"
             className="mt-1.5 xs:hidden xl:flex"
             placeholder="Search"
             inputValue={inputValue}
@@ -76,7 +82,7 @@ export function Header({ disableSticky, className }: HeaderProps): JSX.Element {
           className,
         )}
       >
-        <button onClick={openModal}>
+        <button onClick={openModal} type="button" aria-label="open-modal">
           <CustomIcon className="h-10 w-10" iconName="Settings" />
         </button>
 
@@ -84,22 +90,24 @@ export function Header({ disableSticky, className }: HeaderProps): JSX.Element {
           <CustomIcon className="h-10 w-10" iconName="SpicyChatLogo" />
         </Link>
 
-        <button className="ml-auto">
+        <button className="ml-auto" type="button" aria-label="avatar">
           <Avatar src="/assets/hq.jpg" width={50} />
         </button>
       </header>
 
-      <Modal
-        className="data-[open=true]:animate-out data-[open=false]:animate-in h-full w-64
-          overflow-visible rounded-none bg-black/20 backdrop-blur-md"
-        overlayClassName="bg-black/20 justify-normal"
-        open={open}
-        closeModal={closeModal}
-        closeOnClick
-        defaultAnimation={false}
-      >
-        <MobileSidebarModal closeModal={closeModal} />
-      </Modal>
+      {open && (
+        <Modal
+          className="data-[open=true]:animate-out data-[open=false]:animate-in h-full w-64
+            overflow-visible rounded-none bg-black/20 backdrop-blur-md"
+          overlayClassName="bg-black/20 justify-normal"
+          open={safeOpen}
+          closeModal={closeModal}
+          closeOnClick
+          defaultAnimation={false}
+        >
+          <MobileSidebarModal closeModal={closeModal} />
+        </Modal>
+      )}
     </>
   );
 }

@@ -74,7 +74,9 @@ export function TagsModal({
           hover:cursor-pointer hover:bg-dark-border/90 active:bg-dark-border`,
           className,
         )}
+        type="button"
         onClick={openModal}
+        aria-label="open-tags-modal"
       >
         {children ? <>{children}</> : "Tags"}
       </button>
@@ -93,6 +95,7 @@ export function TagsModal({
           <section className="overflow-hidden py-2">
             <button
               className="absolute right-3 top-3 z-50"
+              type="button"
               onClick={closeModal}
               aria-label="close-tags-modal"
             >
@@ -104,12 +107,14 @@ export function TagsModal({
                 "rounded-md bg-white/50 p-1 px-3",
                 exclude && "text-accent-red",
               )}
+              type="button"
               onClick={() => setExclude(!exclude)}
             >
               exclude
             </button>
 
             <InputField
+              inputId="search-tags"
               inputValue={inputValue}
               handleChange={handleChange}
               placeholder="Search for tags"
@@ -127,6 +132,7 @@ export function TagsModal({
                         "flex w-full flex-row gap-3 text-white/50",
                         isSelected && "font-semibold text-white",
                       )}
+                      type="button"
                       onClick={() => handleClick(option)}
                     >
                       {option}{" "}
@@ -151,6 +157,7 @@ export function TagsModal({
                         "flex w-full flex-row gap-3 text-white/50",
                         isSelected && "font-semibold text-white",
                       )}
+                      type="button"
                       onClick={() => handleClick(option)}
                     >
                       {option}{" "}

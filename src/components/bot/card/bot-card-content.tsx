@@ -17,7 +17,7 @@ export function BotCardContent({
 }: BotCardContentProps): JSX.Element {
   return (
     <div className="group/img relative">
-      <Link href={`/chatbot/${bot.id}`}>
+      <Link href={`/fake-chat/${bot.id}`}>
         {recommended && (
           <Badge
             className="absolute -top-3 left-9 right-9 z-10 text-xs font-bold shadow-lg shadow-black/40
@@ -44,7 +44,7 @@ export function BotCardContent({
               blurClassName="rounded-md animate-pulse bg-[#71767B]"
               src={
                 bot.avatar_url !== "/assets/harley.png"
-                  ? "https://ndsc.b-cdn.net/" + bot.avatar_url
+                  ? bot.avatar_url
                   : "/assets/harley.png"
               }
               alt={bot.id}

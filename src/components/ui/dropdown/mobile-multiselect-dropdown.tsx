@@ -67,6 +67,7 @@ export function MobileMultiselectDropdown({
                 closeOnItemClick={false}
               >
                 <InputField
+                  inputId={`search-mobile-dropdown-${label}`}
                   className="flex xs:hidden"
                   inputClassName="bg-inherit border-b border-white/20"
                   placeholder="Search"

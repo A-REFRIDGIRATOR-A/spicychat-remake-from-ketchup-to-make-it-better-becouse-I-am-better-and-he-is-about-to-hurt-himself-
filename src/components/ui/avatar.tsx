@@ -16,7 +16,10 @@ export function Avatar({
 }: AvatarProps): JSX.Element {
   return (
     <div
-      className={cn("relative rounded-full overflow-hidden", className)}
+      className={cn(
+        "relative flex-none overflow-hidden rounded-full",
+        className,
+      )}
       style={{ width, height: width }}
     >
       <NextImage

@@ -1,8 +1,9 @@
 import { cn } from "../lib/cn";
+import { useRef } from "react";
 import type { ChangeEvent, KeyboardEvent } from "react";
 
 type InputFieldProps = {
-  inputId?: string;
+  inputId: string;
   label?: string;
   placeholder?: string;
   inputValue: string | null;
@@ -35,15 +36,20 @@ export function InputField({
   handleChange,
   handleKeyboardShortcut,
 }: InputFieldProps): JSX.Element {
+  const inputRef = useRef<HTMLInputElement>(null);
   const slicedInputValue = inputValue?.slice(0, inputLimit) ?? "";
 
   const inputLength = slicedInputValue.length;
   const isHittingInputLimit = inputLimit && inputLength > inputLimit;
   const isInputLimit = inputLimit && inputLength === inputLimit;
 
+  const onTouchMove = () => inputRef.current?.blur();
+
   return (
     <div className={cn("relative inline-flex w-full flex-col", className)}>
-      <label className="text-sm">{label}</label>
+      <label htmlFor={inputId} className="text-sm">
+        {label}
+      </label>
       <div
         className={cn(
           "inline-flex flex-col overflow-hidden rounded transition-all duration-500",
@@ -65,6 +71,7 @@ export function InputField({
           />
         ) : (
           <input
+            ref={inputRef}
             id={inputId}
             className={cn(
               "w-full rounded-md bg-white/20 p-2 outline-none",

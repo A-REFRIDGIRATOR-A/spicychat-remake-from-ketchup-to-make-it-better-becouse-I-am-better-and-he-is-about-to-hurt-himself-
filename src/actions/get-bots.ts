@@ -43,9 +43,12 @@ export async function getBots(limit: number = 48): Promise<{ data: Bot[] }> {
 
     const data = (await r.json()).results[0].hits;
 
-    const transformedData: Bot[] = data.map(
-      (hit: { document: Bot }) => hit.document,
-    );
+    const transformedData: Bot[] = data.map((hit: { document: Bot }) => {
+      return {
+        ...hit.document,
+        avatar_url: `https://ndsc.b-cdn.net/${hit.document.avatar_url}`,
+      };
+    });
 
     revalidatePath("/");
 

@@ -4,7 +4,7 @@
 
 @layer base {
   :root {
-    --main-accent: var(--accent-blue);
+    --main-accent: var(--accent-spicypink);
 
     --accent-yellow: 255 213 0;
     --accent-blue: 29 155 240;
@@ -12,6 +12,8 @@
     --accent-purple: 120 87 255;
     --accent-orange: 255 122 0;
     --accent-green: 0 184 122;
+
+    --accent-spicypink: 191 41 113;
   }
 
   em {

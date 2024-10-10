@@ -13,20 +13,22 @@ export function MobileSidebar({
     <>
       <div
         className={cn(
-          `xs:hidden fixed inset-0 min-h-screen w-screen z-40
-          backdrop-blur-sm opacity-0 hidden overflow-hidden`,
-          open && "opacity-100 block"
+          `fixed inset-0 z-40 hidden min-h-screen w-screen overflow-hidden opacity-0
+          backdrop-blur-sm xs:hidden`,
+          open && "block opacity-100",
         )}
         autoFocus={open}
       >
         <div
           className={cn(
-            `absolute left-0 top-0 bottom-0 w-64 min-h-screen backdrop-blur-xl z-50
-          transition-all duration-500 -translate-x-96 xs:hidden flex overflow-hidden`,
-            open && "translate-x-0"
+            `absolute bottom-0 left-0 top-0 z-50 flex min-h-screen w-64 -translate-x-96
+            overflow-hidden backdrop-blur-xl transition-all duration-500 xs:hidden`,
+            open && "translate-x-0",
           )}
         >
-          <button onClick={closeSidebar}>close</button>
+          <button type="button" onClick={closeSidebar}>
+            close
+          </button>
         </div>
       </div>
     </>

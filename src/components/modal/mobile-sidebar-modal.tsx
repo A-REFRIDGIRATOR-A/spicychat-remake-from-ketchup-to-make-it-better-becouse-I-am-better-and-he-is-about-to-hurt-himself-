@@ -18,7 +18,7 @@ type NavLink = {
 
 const navLinks: NavLink[] = [
   { name: "Home", link: "/", iconName: "HomeIcon" },
-  { name: "Chats", link: "/fake-chat", iconName: "MessageIcon" },
+  { name: "Chats", link: "/fake-chat/fake", iconName: "MessageIcon" },
   { name: "Create", link: "/create", iconName: "PlusIcon" },
   { name: "My Chatbots", link: "/my-chatbots", iconName: "CreateIcon" },
   { name: "Favorites", link: "/favorites", iconName: "HeartIcon" },

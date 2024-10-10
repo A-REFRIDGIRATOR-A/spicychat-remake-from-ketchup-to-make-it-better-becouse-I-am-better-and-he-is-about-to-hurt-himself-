@@ -83,6 +83,7 @@ export function Footer(): JSX.Element {
               key={index}
               className="flex flex-row items-center gap-3 text-[10px] font-bold xs:text-xs"
               href={link.link}
+              aria-label={link.linkName}
             >
               <CustomIcon
                 className="h-4 w-4 xs:h-5 xs:w-5"

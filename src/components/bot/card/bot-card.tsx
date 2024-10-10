@@ -31,7 +31,7 @@ export function BotCard({ bot, recommended }: BotCardProps): JSX.Element {
             {bot.name}
           </span>
 
-          <button className="ml-auto">
+          <button className="ml-auto" type="button" aria-label="options">
             <CustomIcon
               className="h-8 w-8 hover:text-white/70 active:text-white/50 xs:h-6 xs:w-6"
               iconName="EllipsisIcon"

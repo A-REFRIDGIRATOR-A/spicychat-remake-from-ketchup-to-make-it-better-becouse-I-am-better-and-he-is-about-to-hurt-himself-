@@ -24,13 +24,14 @@ export function FavoriteBotButton({
   return (
     <Button
       className={cn(
-        `absolute top-3 left-3 bg-black/30 rounded-full p-2 backdrop-blur-md transition-transform
-        active:scale-95 xs:hover:scale-105`,
-        buttonClassName
+        `absolute left-3 top-3 rounded-full bg-black/30 p-2 backdrop-blur-md
+        transition-transform active:scale-95 xs:hover:scale-105`,
+        buttonClassName,
       )}
+      type="button"
       onClick={preventBubbling(handleCick)}
     >
-      <CustomIcon className={cn(``, className)} iconName="HeartIcon" />
+      <CustomIcon className={cn("", className)} iconName="HeartIcon" />
     </Button>
   );
 }
